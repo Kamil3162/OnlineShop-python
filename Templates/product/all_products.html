@@ -1,0 +1,18 @@
+{% extends 'Base.html' %}
+{% load static %}
+{% block products %}
+    <link rel="stylesheet" href="/static/products.css">
+    <div class="all-products">
+        this part is responsible for products
+        <br>
+
+        {% for item in data %}
+            <div class="product_control">
+                {{ item }} {{ item.price }}
+                <button data-product="{{ item.id }}">
+                    <a href="{% url 'product_view' item.id %}">View</a>
+                </button>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/static/base.css">
+    <title>Title</title>
+</head>
+<body>
+    <div class="navbar">
+        logo
+        <div class="login_panel">
+            {% if request.user.is_authenticated %}
+                Siema skurwysynie
+                <a href="{% url 'log_out'%}">
+                    <button>LogOut</button>
+                </a>
+                {% else %}
+                <a href="{% url 'login'%}">
+                    <button>Zaloguj sie</button>
+                </a>
+            {% endif %}
+            <a href="{% url 'cart' %}">
+                <button class="koszyk">Bucket</button>
+            </a>
+            <a href="{% url 'all_products' %}">
+                <button class="koszyk">Products</button>
+            </a>
+            <a href="{% url 'information' %}">
+                <button class="koszyk">Home</button>
+            </a>
+            <a href="{% url 'registration' %}">
+                <button class="koszyk">Registration</button>
+            </a>
+
+        </div>
+    </div>
+    <div class="main-content">
+    {% block cart_elements %}
+    {% block product_detail %}
+    {% block login %}
+        {% block products %}
+        {% block register %}
+            {% block bucket %}
+                Main Content
+                d
+                sa
+                dsa
+                d
+                sa
+                ds
+                ad
+                sa
+                d
+            {% endblock %}
+        {% endblock %}
+        {% endblock %}
+    {% endblock %}
+    {% endblock %}
+    {% endblock %}
+    </div>
+    <div class="footer">
+        footer
+    </div>
+</body>
+</html>

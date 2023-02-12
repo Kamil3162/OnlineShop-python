@@ -1,0 +1,34 @@
+
+h1{
+    color: red;
+}
+/* part responsible for Base view of page */
+.navbar{
+    height: 100px;
+}
+
+.main-content{
+    height: 600px;
+    font-family: 'Roboto Mono', monospace;
+    color: cornsilk;
+}
+/* part of cart*/
+.cart-remove{
+    max-width: 50px;
+    max-height: 30px;
+}
+
+/* footer part - manage*/
+
+.footer{
+    height: 300px;
+}
+
+/* body part */
+body{
+   background-color: rgba(89, 164, 252, 1);
+background-image: linear-gradient(94deg, rgba(89, 164, 252, 1) 0%, rgba(41, 53, 86, 1) 89%);
+        background-repeat: no-repeat;
+
+}
+

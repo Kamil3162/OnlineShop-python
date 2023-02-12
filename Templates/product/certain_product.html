@@ -1,0 +1,9 @@
+{% extends 'Base.html' %}
+
+{% block product_detail %}
+    {{ product.producer }}
+    <br>
+    <button>
+        <a href="{% url 'add_cart' product.id %}">Add to bucket</a>
+    </button>
+{% endblock %}

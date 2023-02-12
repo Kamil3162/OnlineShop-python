@@ -1,0 +1,14 @@
+{% extends 'Base.html' %}
+{% load static %}
+{% block cart_elements %}
+    <link rel="stylesheet" href="/static/base.css">
+    {% for element in items %}
+        {{ element.id }}
+        {{ element.product.price }} {{ element.price }} {{ element.quantity }}
+        <button class="cart-remove">
+            <a href="{% url 'del_cart' element.product.id %}">Delete</a>
+        </button>
+        <br>
+    {% endfor %}
+    Sum {{ sum }}
+{% endblock %}

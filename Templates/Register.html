@@ -1,0 +1,9 @@
+{% extends "Base.html" %}
+
+{% block register %}
+    <form action="{% url 'registration' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ register }}
+        <button type="submit" name="register">Register</button>
+    </form>
+{% endblock %}
