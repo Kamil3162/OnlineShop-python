@@ -54,11 +54,10 @@ def cart_elements(request):
                 Next we are displaying these items using for loop 
             '''
             order = get_object_or_404(Order, customer=customer)
-            print(order)
             items = order.orderitem_set.all()
             calculate_sum(items)
-            for item in items:
-                print(item.product)
+            '''for item in items:
+                print(item.product)'''
         except ValueError:
             print("Value error")
             return redirect('information')
@@ -67,45 +66,96 @@ def cart_elements(request):
             return redirect('information')
     else:
         items = []
+
     context = {'items':items}
     context['sum'] = calculate_sum(items)
+
     return render(request, 'product/cart_elements.html', context)
 
 
-def cart_add(request, id_prod):
-    if request.user.is_authenticated:
-        product = Product.objects.get(id=id_prod)
-        print('This is add to cart')
-        order = Order.objects.get_or_create(customer=request.user, complete=False)[0]
-        order_proper = Order.objects.get(id=order.id, complete=False)
-        print(type(order_proper))
-        try:
-            ordered_item = OrderItem.objects.get(product=product, order=order_proper.id)
-            ordered_item.quantity += 1
-            ordered_item.save()
-        except ObjectDoesNotExist:
-            new_order = OrderItem.objects.create(product=product, order=order, quantity=1)
-            new_order.save()
+def cart_add(request):
+    if request.method == "POST":
+        product_count = int(request.POST.get('product-count'))
+        id_prod = request.POST.get('product_id')
+        if request.user.is_authenticated:
+            product = Product.objects.get(id=id_prod)
+            print('This is add to cart')
+            order = Order.objects.get_or_create(customer=request.user, complete=False)[0]
+            order_proper = Order.objects.get(id=order.id,
+                                             complete=False)
+            print(type(order_proper))
+            try:
+                ordered_item = OrderItem.objects.get(product=product,
+                                                     order=order_proper.id)
+                if product_count > 0:
+                    ordered_item.quantity += product_count
+                    ordered_item.save()
+            except ObjectDoesNotExist:
+                if product_count > 1:
+                    new_order = OrderItem.objects.create(product=product,
+                                                         order=order,
+                                                         quantity=product_count)
+                else:
+                    new_order = OrderItem.objects.create(product=product,
+                                                         order=order,
+                                                         quantity=1)
+                new_order.save()
+        return redirect('all_products')
+
     return redirect('all_products')
 
 
 def del_from_cart(request, id_prod):
-    if request.method == "GET":
+    if request.user.is_authenticated:
+        user = request.user
+        try:
+            product = Product.objects.get(id=id_prod)
+            current_order = Order.objects.get(customer=user, complete=False)
+            current_orderer_items = OrderItem.objects.get(product=product,
+                                                          order=current_order.id)
+            current_orderer_items.delete()
+            return redirect('cart')
+        except current_order.DoesNotExist:
+            print("Model nie istnieje")
+            return redirect('information')
+    else:
+        print("Hello world")
+        return redirect('information')
+
+def cart_count_add(request, id_prod):
+    if request.user.is_authenticated:
+        user = request.user
+        try:
+            product = Product.objects.get(id=id_prod)
+            current_order = Order.objects.get(customer=user,
+                                              complete=False)
+            ordered_items = OrderItem.objects.filter(product=product,
+                                                     order=current_order.id)
+            for item in ordered_items:
+                item.quantity += 1
+            print(ordered_items)
+        except ValueError:
+            raise ValueError
+
+def cart_count_minus(request, id_prod):
+    if request.method == "POST":
+        print("This is post method")
+        print(request.POST.get('minus'))
         if request.user.is_authenticated:
             user = request.user
             try:
                 product = Product.objects.get(id=id_prod)
-                current_order = Order.objects.get(customer=user, complete=False)
-                current_orderer_items = OrderItem.objects.get(product=product,
-                                                              order=current_order.id)
-                current_orderer_items.delete()
-                return redirect('cart')
-            except current_order.DoesNotExist:
-                print("Model nie istnieje")
-                return redirect('information')
-    else:
-        print("Hello world")
-        return redirect('information')
+                current_order = Order.objects.get(customer=user,
+                                                  complete=False)
+                ordered_items = OrderItem.objects.get(product=product,
+                                                      order=current_order.id)
+
+                ordered_items.quantity -= 1
+                print("success")
+                current_order.save()
+            except ValueError:
+                raise ValueError
+    return redirect('cart')
 
 # 4. Określanie metody płatności
 

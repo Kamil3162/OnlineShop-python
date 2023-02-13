@@ -3,12 +3,23 @@
 {% block cart_elements %}
     <link rel="stylesheet" href="/static/base.css">
     {% for element in items %}
-        {{ element.id }}
         {{ element.product.price }} {{ element.price }} {{ element.quantity }}
-        <button class="cart-remove">
-            <a href="{% url 'del_cart' element.product.id %}">Delete</a>
+        <form action="{% url 'minus_cart' element.product.id %}" method="POST">
+            {% csrf_token %}
+            <button class="cart-add" onclick="quantity_modifier_add()" name="add">
+                Add
+            </button>
+            <button class="cart-minus" onclick="quantity_modifier_minus()" name="minus">
+                Minus
+            </button>
+        </form>
+
+        <input type="text" value="{{ element.quantity }}" name="element-quantity">
+        <button>
+        <a href="{% url 'del_cart' element.product.id %}">Delete</a>
         </button>
         <br>
     {% endfor %}
     Sum {{ sum }}
 {% endblock %}
+

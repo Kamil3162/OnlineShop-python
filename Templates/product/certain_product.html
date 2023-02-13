@@ -2,8 +2,12 @@
 
 {% block product_detail %}
     {{ product.producer }}
-    <br>
-    <button>
-        <a href="{% url 'add_cart' product.id %}">Add to bucket</a>
-    </button>
+    <form action="{% url 'add_cart' %}" method="POST">
+    {% csrf_token%}
+    <input hidden type="text" value="{{ product.id }}" name="product_id">
+    <input type="number" id="product-count" name="product-count">
+        <button type="submit">
+            Add to bucket
+        </button>
+    </form>
 {% endblock %}
