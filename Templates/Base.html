@@ -36,6 +36,10 @@
         </div>
     </div>
     <div class="main-content">
+    {% block success %}
+    {% block final_order %}
+    {% block detailview %}
+    {% block listview %}
     {% block cart_elements %}
     {% block product_detail %}
     {% block login %}
@@ -55,6 +59,10 @@
             {% endblock %}
         {% endblock %}
         {% endblock %}
+    {% endblock %}
+    {% endblock %}
+    {% endblock %}
+    {% endblock %}
     {% endblock %}
     {% endblock %}
     {% endblock %}

@@ -7,6 +7,10 @@ urlpatterns = [
     path('all/cart/', views.cart_elements, name='cart'),
     path('all/cart/add', views.cart_add, name='add_cart'),
     path('all/cart/<int:id_prod>/del', views.del_from_cart, name='del_cart'),
-    path('all/cart/<int:id_prod>/minus', views.cart_count_minus, name='minus_cart')
-
+    path('all/cart/<int:id_prod>/minus', views.cart_count_minus, name='minus_cart'),
+    path('all/cart/<int:id_prod>/add', views.cart_count_add, name='adding_cart'),
+    path('all/cart/finilize', views.finalize_order, name='order_final'),
+    path('all/cart/finilize/success', views.finalize_success, name='order_finish_panel'),
+    #path('all/listview', views.DisplayProducts.as_view(), name='listview_display'),
+    #path('all/<int:id>/detail', views.DetailsProduct.as_view(), name='detail_view')
 ]

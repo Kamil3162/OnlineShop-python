@@ -1,7 +1,9 @@
 from django.db import models
-from django.core.validators import MaxValueValidator, MinValueValidator
+from django.core.validators import (MaxValueValidator,
+                                    MinValueValidator,
+                                    MaxLengthValidator,
+                                    MinLengthValidator)
 from django.shortcuts import redirect
-
 from MainPart.models import CustomUser
 # Create your models here.
 
@@ -124,3 +126,15 @@ class OrderItem(models.Model):
         for product in order_objects:
             final_sum += product.price
         return final_sum
+
+class ShipAddress(models.Model):
+    city = models.CharField(max_length=60, blank=False)
+    street = models.CharField(max_length=60, blank=False)
+    number_local = models.CharField(max_length=6)
+    region = models.CharField(max_length=30)
+    country = models.CharField(max_length=40, blank=True, default="Poland")
+    phone_number = models.IntegerField(blank=True, default="", validators=[MinValueValidator(100000000),
+                                                                           MaxValueValidator(999999999)])
+    user = models.ForeignKey(CustomUser, blank=False, on_delete=models.CASCADE)
+    order = models.ForeignKey(Order, blank=False, on_delete=models.CASCADE)
+

@@ -1,0 +1,14 @@
+{% extends 'Base.html' %}
+{% load static %}
+
+{% block listview %}
+    {% for product in products %}
+        {{ product }}
+        <button>
+            <a href="{% url 'detail_view' product.slug %}">
+                Explore
+            </a>
+        </button>
+        <br>
+    {% endfor %}
+{% endblock %}

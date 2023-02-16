@@ -4,22 +4,29 @@
     <link rel="stylesheet" href="/static/base.css">
     {% for element in items %}
         {{ element.product.price }} {{ element.price }} {{ element.quantity }}
-        <form action="{% url 'minus_cart' element.product.id %}" method="POST">
-            {% csrf_token %}
-            <button class="cart-add" onclick="quantity_modifier_add()" name="add">
-                Add
-            </button>
-            <button class="cart-minus" onclick="quantity_modifier_minus()" name="minus">
-                Minus
-            </button>
-        </form>
+        <button class="cart-add" onclick="quantity_modifier_add()" name="add">
+            <a href="{% url 'adding_cart' element.product.id %}">Add</a>
+        </button>
+        <button class="cart-minus" onclick="quantity_modifier_minus()" name="minus">
+            <a href="{% url 'minus_cart' element.product.id %}">Minus</a>
+        </button>
 
         <input type="text" value="{{ element.quantity }}" name="element-quantity">
         <button>
         <a href="{% url 'del_cart' element.product.id %}">Delete</a>
         </button>
         <br>
+
     {% endfor %}
     Sum {{ sum }}
+    <a href="{% url 'order_final' %}">
+    <button>
+        Finalize
+    </button>
+    </a>
+    <button>
+        <a href="{% url 'all_products' %}">Continue</a>
+    </button>
 {% endblock %}
+
 

@@ -7,18 +7,14 @@ class EmailBackend(BaseBackend):
     model = get_user_model()
 
     def authenticate(self, request, username=None, password=None, **kwargs):
-        print(username)
-        print(password)
-        print(request.POST)
-        #email = request.POST.get('username')
-        #print(request.POST.get('password'))
-        #print(request.POST.get('username'))
-
+        '''
+            Our fuction those we use to authenticate our custom User,
+            if we trying to login function is invoked and
+        '''
         try:
             user = self.model.objects.get(email=username)
             print(user.password)
             print(password)
-            #print(user.check_password(password))
             if user.password == password:
                 print('data')
                 return user

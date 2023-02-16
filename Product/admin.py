@@ -4,7 +4,8 @@ from .models import (Product,
                      Rate,
                      Category,
                      Order,
-                     OrderItem)
+                     OrderItem,
+                     ShipAddress)
 
 admin.site.register(Producer)
 
@@ -13,7 +14,6 @@ admin.site.register(Product)
 admin.site.register(Rate)
 
 admin.site.register(Category)
-
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
@@ -25,3 +25,8 @@ class OrderAdmin(admin.ModelAdmin):
 class OrderItemAdmin(admin.ModelAdmin):
     list_display = ['order', 'product', 'quantity']
     search_fields = ['order']
+
+@admin.register(ShipAddress)
+class ShipAddressAdmin(admin.ModelAdmin):
+    list_display = ['order', 'user']
+    search_fields = ['user']

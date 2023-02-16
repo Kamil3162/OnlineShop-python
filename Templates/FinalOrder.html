@@ -1,0 +1,16 @@
+{% extends 'Base.html' %}
+
+{% block final_order %}
+    {% for order in items %}
+        {{ order.product.name }} {{ order.product.price }} {{ order.quantity }}
+    {% endfor %}
+    <br>
+
+    {{ value }}
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Apply</button>
+    </form>
+{% endblock %}
