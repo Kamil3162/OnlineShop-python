@@ -1,6 +1,8 @@
 {% extends 'Base.html' %}
-
+{% load static %}
+<script src="{% static 'html_updates.js' %}"></script>
 {% block product_detail %}
+
     {{ product.producer }}
     <form action="{% url 'add_cart' %}" method="POST">
     {% csrf_token%}
@@ -10,4 +12,21 @@
             Add to bucket
         </button>
     </form>
+    <button onclick="rate_from_active()">Add a opinion</button>
+    <div class="opinion_form">
+        <form method="post">
+            {% csrf_token %}
+            {{ opinion_form.as_p }}
+            <button type="submit">Upload comment</button>
+        </form>
+    </div>
+    <div class="item-opinions">
+        Opinions all
+    <br>
+        {% for opinion in opinions %}
+            {{ opinion.description }}
+            {{ opinion.user }}
+            <br>
+        {% endfor %}
+    </div>
 {% endblock %}

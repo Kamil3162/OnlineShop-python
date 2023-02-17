@@ -57,7 +57,7 @@ class Rate(models.Model):
     description = models.TextField(max_length=200)
 
     def __str__(self):
-        return self.user, self.description[:30]
+        return str(self.rate)
 
 
 class Order(models.Model):

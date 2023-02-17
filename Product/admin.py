@@ -11,7 +11,6 @@ admin.site.register(Producer)
 
 admin.site.register(Product)
 
-admin.site.register(Rate)
 
 admin.site.register(Category)
 
@@ -30,3 +29,8 @@ class OrderItemAdmin(admin.ModelAdmin):
 class ShipAddressAdmin(admin.ModelAdmin):
     list_display = ['order', 'user']
     search_fields = ['user']
+
+@admin.register(Rate)
+class ShipAddressAdmin(admin.ModelAdmin):
+    list_display = ['product', 'user', 'rate']
+    search_fields = ['product']

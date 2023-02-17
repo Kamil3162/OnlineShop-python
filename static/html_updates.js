@@ -17,3 +17,12 @@ function quantity_modifier_minus(){
     console.log("You clicked minus");
     //product_quantity.setAttribute('value',product_quantity[0].value);
 }
+
+function rate_from_active(){
+    var bool = sessionStorage.getItem('rate_active');
+    console.log(bool);
+    if (bool){
+        let form = document.getElementsByClassName('.opinion_form');
+        form.style.visibility = "hidden";
+    }
+}

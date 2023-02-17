@@ -6,38 +6,88 @@ from django.views import View
 from .models import (Product,
                      Category,
                      OrderItem,
-                     Order)
+                     Order,
+                     Rate)
 from MainPart.models import CustomUser
 
-from .forms import ShipForm
+from .forms import (RateForm,
+                    ShipForm)
+
+def generate_opinions(query:Rate):
+    final_opinion = 0
+    counter = 0
+    for opinion in query:
+        final_opinion += opinion.rate
+        counter += 1
+    return final_opinion/counter
 
 def all_products(request):
     prod = Product.objects.all()
+    op = Rate.objects.all()
+    opinions = ""       #[generate_opinions(x) for x in prod]
+    for opdsa in op:
+        print(opdsa)
+    for i in prod:
+        print(i)
+
     try:
         username = request.session.__getitem__('username')
     except KeyError:
         print("Key is null")
-    return render(request, 'product/all_products.html', {'data':prod})
-
-# 1 dispaly kazdego produktu na naszej stronie - cena , nazwa,
-# 2 wchodzenie w szczegóły naszego produktu opis itp jedynie w opisie produktu jest dodawanie do koszyka
-
+    return render(request, 'product/all_products.html', {'data': prod,
+                                                         'opinions': opinions})
 
 class Product_details(View):
     def get(self, request, id):
+        """
+        This part is used to display a particular product with
+        all details and generate all comments to following product
+        and generate empty form to add a opinion
+        If user is active we can add a rate , if not we cant do this.
+        """
         product = Product.objects.all().get(id=id)
-        return render(request, 'product/certain_product.html', {'product':product})
+        opinions = Rate.objects.filter(product=product)
+        if request.user.is_authenticated:
+            context = {
+                'product': product,
+                'opinion_form': RateForm(),
+                'opinions': opinions
+            }
+            return render(request, 'product/certain_product.html', context)
+        else:
+            context = {
+                'product': product,
+                'opinions':opinions
+            }
+            return render(request, 'product/certain_product.html', context)
 
-    def post(self, request):
-        pass
+    def post(self, request, id):
+        """
+        This part is responsible for add a rate to particular product,
+        First we have to get object product and user to get comment to
+        product if this comment exists we return only view .
 
-# 3. wiew z koszykiem czyli display wszystkich prodkutków i sumowanie naszego zamówienia
-'''
-    I can do display order like based class view like get - display all
-    Second get - display all componenets
-    Thrid post - delete from 
-'''
-
+        On the other hand if we havent any comment from user to product
+        we can add this comment to this product
+        """
+        if request.user.is_authenticated:
+            product = Product.objects.get(id=id)
+            user = CustomUser.objects.get(email=request.session.get('username'))
+            rate_existance = Rate.objects.filter(user=user, product=product).__len__()
+            if rate_existance:
+                request.session['rate_active'] = False
+                return redirect('all_products')
+            else:
+                opinion_form = RateForm(request.POST)
+                if opinion_form.is_valid():
+                    print(request.session.get('username'))
+                    opinion = opinion_form.save(commit=False)
+                    opinion.product = product
+                    opinion.user = user
+                    opinion.save()
+                    return redirect('all_products')
+        else:
+            return redirect('product_view')
 
 def calculate_sum(items: OrderItem):
     value = 0
