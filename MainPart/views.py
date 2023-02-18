@@ -4,12 +4,23 @@ from django.contrib.auth import login, logout, authenticate
 from django.views.generic import View
 from MainPart import forms
 from .models import CustomUser
+from Product.models import Category
 # Create your views here.
 
 
 def first_information(request):
-    return render(request, "Base.html")
+    categories = Category.objects.all()
+    context = {
+        'categories': categories
+    }
+    return render(request, "Base.html", context)
 
+def categories(request):
+    category = Category.objects.all()
+    context = {
+        'categories':category
+    }
+    return render(request, 'product/categories.html', context)
 
 def indexpage(request):
     return render(request, "Navbar.html")

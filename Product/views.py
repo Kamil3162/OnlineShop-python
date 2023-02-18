@@ -35,8 +35,8 @@ def all_products(request):
     except KeyError:
         print("Key is null")
     return render(request, 'product/all_products.html', {'data': prod,
-                                                         'opinions': opinions})
 
+                                                         'opinions': opinions})
 class Product_details(View):
     def get(self, request, id):
         """
@@ -251,6 +251,14 @@ def finalize_order(request):
 
 def finalize_success(request):
     return render(request, 'product/success_information.html')
+
+def category_products(request, nazwa):
+    products = Category.objects.all()
+    context = {
+        'products':products,
+    }
+    return render(request, 'Category.html', context)
+
 
 # short hints to working with cbv
 '''

@@ -32,10 +32,15 @@
             <a href="{% url 'registration' %}">
                 <button class="koszyk">Registration</button>
             </a>
-
+            {% include 'product/categories.html' %}
         </div>
     </div>
     <div class="main-content">
+    {% for category in categories %}
+        {{ category }}
+        <br>
+    {% endfor  %}
+    {% block category_products %}
     {% block success %}
     {% block final_order %}
     {% block detailview %}
@@ -59,6 +64,7 @@
             {% endblock %}
         {% endblock %}
         {% endblock %}
+    {% endblock %}
     {% endblock %}
     {% endblock %}
     {% endblock %}
