@@ -138,3 +138,24 @@ class ShipAddress(models.Model):
     user = models.ForeignKey(CustomUser, blank=False, on_delete=models.CASCADE)
     order = models.ForeignKey(Order, blank=False, on_delete=models.CASCADE)
 
+'''
+class Complain(models.Model):
+    complait = 'Complain'
+    product_return = 'Return'
+    ship_problem = 'Ship'
+    manufacturing_defect = 'Defect'
+
+    topics = (
+        (complait, 'Reklamacja'),
+        (product_return, 'Zwrot - 14 dni'),
+        (ship_problem, 'Gdzie moja paczka?'),
+        (manufacturing_defect, 'Wada fabryczna')
+    )
+
+    user = models.ForeignKey(CustomUser, blank=False, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, blank=False, on_delete=models.CASCADE)
+    order = models.ForeignKey(Order, blank=False, on_delete=models.CASCADE)
+    subject = models.CharField(max_length=20, default=topics[0], choices=topics, blank=False)
+    description = models.CharField(max_length=200, blank=True)
+
+'''

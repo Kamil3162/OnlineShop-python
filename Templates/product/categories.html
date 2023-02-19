@@ -1,6 +1,10 @@
 
-<select name="categoryies" id="categoryies">
-    {% for category in categories %}
-        <option value="{{ category }}">{{ category }}</option>
-    {% endfor %}
-</select>
+
+{% for category in categories %}
+    <button>
+         <a href="{% url 'product_category' category %}">
+            {{ category }}
+        </a>
+    </button>
+{% endfor %}
+

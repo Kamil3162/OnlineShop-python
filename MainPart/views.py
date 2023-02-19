@@ -9,18 +9,12 @@ from Product.models import Category
 
 
 def first_information(request):
-    categories = Category.objects.all()
-    context = {
-        'categories': categories
-    }
-    return render(request, "Base.html", context)
+    return render(request, "Base.html")
 
-def categories(request):
+def access_categories(request):
     category = Category.objects.all()
-    context = {
-        'categories':category
-    }
-    return render(request, 'product/categories.html', context)
+    return {'categories': category}
+
 
 def indexpage(request):
     return render(request, "Navbar.html")

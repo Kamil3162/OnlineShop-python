@@ -34,3 +34,10 @@ class ShipAddressAdmin(admin.ModelAdmin):
 class ShipAddressAdmin(admin.ModelAdmin):
     list_display = ['product', 'user', 'rate']
     search_fields = ['product']
+
+'''
+@admin.register(Complain)
+class ComplainApplyAdmin(admin.ModelAdmin):
+    list_display = ['user', 'product', 'subject']
+    search_fields = ['user']
+'''

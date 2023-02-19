@@ -11,8 +11,9 @@ from .models import (Product,
 from MainPart.models import CustomUser
 
 from .forms import (RateForm,
-                    ShipForm)
-
+                    ShipForm,
+                    ComplainForm)
+from django.core import exceptions
 def generate_opinions(query:Rate):
     final_opinion = 0
     counter = 0
@@ -103,7 +104,7 @@ def cart_elements(request):
                 This part is responsible for search product using PK in ordersItem
                 Next we are displaying these items using for loop 
             '''
-            order = get_object_or_404(Order, customer=customer)
+            order = get_object_or_404(Order, customer=customer, complete=False)
             if order.complete is False:
                 allow = True
                 items = order.orderitem_set.all()
@@ -111,6 +112,12 @@ def cart_elements(request):
                     'items': items,
                     'sum': calculate_sum(items),
                     'finalize': True
+                }
+            else:
+                context = {
+                    'items':[],
+                    'sum':0,
+                    'finalize':False
                 }
         except ValueError:
             print("Value error")
@@ -253,12 +260,48 @@ def finalize_success(request):
     return render(request, 'product/success_information.html')
 
 def category_products(request, nazwa):
-    products = Category.objects.all()
+    category = Category.objects.get(name=nazwa)
+    products = Product.objects.filter(category=category)
     context = {
         'products':products,
     }
     return render(request, 'Category.html', context)
+'''
+class ReplyComplains(View):
+    def get(self, request):
+        print("this is get request")
+        context = {
+            'complain': ComplainForm()
+        }
+        return render(request, 'product/complain.html', context)
 
+    def post(self, request):
+        complain_from = ComplainForm(request.POST)
+        if complain_from.is_valid():
+            data = complain_from.cleaned_data
+            user = get_object_or_404(CustomUser, email=data.get('user'))
+            product = get_object_or_404(Product, name=data.get('product'))
+            #order = get_object_or_404(Order, customer=user, id=data.get('order'))
+            subject = data.get('subject')
+            description = data.get('description')
+            try:
+                complain = Complain.objects.get_or_create(user=user,
+                                                          product=product,
+                                                          order=data.get('order'),
+                                                          subject=subject,
+                                                          description=description)
+                return redirect('information')
+            except exceptions.FieldError:
+                print("This data to field is bad")
+            except exceptions.MultipleObjectsReturned:
+                print("You pass multiple complain")
+            except exceptions.FieldDoesNotExist:
+                print("Field Does not exists")
+            except ObjectDoesNotExist:
+                print("This object noe exist")
+        print("This is validation of form - not working  ")
+        return redirect('product_complain')
+'''
 
 # short hints to working with cbv
 '''

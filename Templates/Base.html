@@ -32,35 +32,31 @@
             <a href="{% url 'registration' %}">
                 <button class="koszyk">Registration</button>
             </a>
-            {% include 'product/categories.html' %}
+            <a href="{% url 'product_complain' %}">
+                <button class="koszyk">Complain</button>
+            </a>
         </div>
     </div>
     <div class="main-content">
-    {% for category in categories %}
-        {{ category }}
-        <br>
-    {% endfor  %}
-    {% block category_products %}
+    {% block complain %}
+    {% block listview %}
+    {% block product_detail %}
+
+        <div class="category_panel">
+            {% include 'product/categories.html' %}
+        </div>
+        <div class="content">
+            {% block category_products %}
     {% block success %}
     {% block final_order %}
     {% block detailview %}
-    {% block listview %}
+
     {% block cart_elements %}
-    {% block product_detail %}
     {% block login %}
         {% block products %}
         {% block register %}
             {% block bucket %}
-                Main Content
-                d
-                sa
-                dsa
-                d
-                sa
-                ds
-                ad
-                sa
-                d
+
             {% endblock %}
         {% endblock %}
         {% endblock %}
@@ -72,6 +68,9 @@
     {% endblock %}
     {% endblock %}
     {% endblock %}
+    {% endblock %}
+        </div>
+
     </div>
     <div class="footer">
         footer
