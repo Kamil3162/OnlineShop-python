@@ -5,7 +5,8 @@ from .models import (Product,
                      Category,
                      Order,
                      OrderItem,
-                     ShipAddress)
+                     ShipAddress,
+                     Complain)
 
 admin.site.register(Producer)
 
@@ -35,9 +36,9 @@ class ShipAddressAdmin(admin.ModelAdmin):
     list_display = ['product', 'user', 'rate']
     search_fields = ['product']
 
-'''
+
 @admin.register(Complain)
 class ComplainApplyAdmin(admin.ModelAdmin):
-    list_display = ['user', 'product', 'subject']
+    list_display = ['user', 'product', 'subject', 'order', 'date_created']
     search_fields = ['user']
-'''
+

@@ -1,3 +1,5 @@
+from typing import List
+
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import (render,
                               redirect,
@@ -7,7 +9,8 @@ from .models import (Product,
                      Category,
                      OrderItem,
                      Order,
-                     Rate)
+                     Rate,
+                     Complain)
 from MainPart.models import CustomUser
 
 from .forms import (RateForm,
@@ -23,9 +26,30 @@ def generate_opinions(query:Rate):
     return final_opinion/counter
 
 def all_products(request):
+    """
+        This function is responsible for generating all product on site
+        Also generate average rate for ceratin product close view btn
+    """
     prod = Product.objects.all()
     op = Rate.objects.all()
+
+    def generate_average_rate(product: Product):
+        average_mark = 0
+        rates = Rate.objects.filter(product=product)
+        for rate in rates:
+            average_mark += rate.rate
+        return average_mark/len(rates)
+
+    def generate_all_marks():
+        generated_marks = list()
+        for product in prod:
+            result = generate_average_rate(product)
+            generated_marks.append(result)
+        return generated_marks
+
     opinions = ""       #[generate_opinions(x) for x in prod]
+    marks = generate_all_marks()
+    print(marks)
     for opdsa in op:
         print(opdsa)
     for i in prod:
@@ -36,7 +60,6 @@ def all_products(request):
     except KeyError:
         print("Key is null")
     return render(request, 'product/all_products.html', {'data': prod,
-
                                                          'opinions': opinions})
 class Product_details(View):
     def get(self, request, id):
@@ -247,7 +270,7 @@ def finalize_order(request):
     else:
         delivery_form = ShipForm()
         user_object = CustomUser.objects.get(email=request.session.get('username'))
-        order = Order.objects.get(customer=user_object)
+        order = Order.objects.get(customer=user_object, complete=False)
         order_items = OrderItem.objects.filter(order=order)
         context = {
             'items': order_items,
@@ -266,7 +289,7 @@ def category_products(request, nazwa):
         'products':products,
     }
     return render(request, 'Category.html', context)
-'''
+
 class ReplyComplains(View):
     def get(self, request):
         print("this is get request")
@@ -281,27 +304,33 @@ class ReplyComplains(View):
             data = complain_from.cleaned_data
             user = get_object_or_404(CustomUser, email=data.get('user'))
             product = get_object_or_404(Product, name=data.get('product'))
-            #order = get_object_or_404(Order, customer=user, id=data.get('order'))
+            order = get_object_or_404(Order, customer=user, id=data.get('order'))
             subject = data.get('subject')
             description = data.get('description')
             try:
-                complain = Complain.objects.get_or_create(user=user,
-                                                          product=product,
-                                                          order=data.get('order'),
-                                                          subject=subject,
-                                                          description=description)
-                return redirect('information')
+                complain = Complain.objects.get(user=user,
+                                                product=product,
+                                                order=order,
+                                                subject=subject,
+                                                description=description)
+                return redirect('product_complain')
             except exceptions.FieldError:
                 print("This data to field is bad")
             except exceptions.MultipleObjectsReturned:
                 print("You pass multiple complain")
             except exceptions.FieldDoesNotExist:
                 print("Field Does not exists")
-            except ObjectDoesNotExist:
-                print("This object noe exist")
+            except complain.DoesNotExist:
+                complain = Complain.objects.create(user=user,
+                                                   product=product,
+                                                   order=order,
+                                                   subject=subject,
+                                                   description=description)
+                print("Now we create a complain")
+                return redirect('information')
         print("This is validation of form - not working  ")
         return redirect('product_complain')
-'''
+
 
 # short hints to working with cbv
 '''

@@ -138,7 +138,7 @@ class ShipAddress(models.Model):
     user = models.ForeignKey(CustomUser, blank=False, on_delete=models.CASCADE)
     order = models.ForeignKey(Order, blank=False, on_delete=models.CASCADE)
 
-'''
+
 class Complain(models.Model):
     complait = 'Complain'
     product_return = 'Return'
@@ -157,5 +157,6 @@ class Complain(models.Model):
     order = models.ForeignKey(Order, blank=False, on_delete=models.CASCADE)
     subject = models.CharField(max_length=20, default=topics[0], choices=topics, blank=False)
     description = models.CharField(max_length=200, blank=True)
+    date_created = models.DateField(auto_now_add=True)
 
-'''
+

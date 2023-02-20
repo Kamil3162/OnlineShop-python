@@ -12,7 +12,7 @@ urlpatterns = [
     path('all/cart/finilize', views.finalize_order, name='order_final'),
     path('all/cart/finilize/success', views.finalize_success, name='order_finish_panel'),
     path('all/category/<str:nazwa>', views.category_products, name='product_category'),
-    #path('all/complains/', views.ReplyComplains.as_view(), name='product_complain')
+    path('all/complains/', views.ReplyComplains.as_view(), name='product_complain')
     #path('all/listview', views.DisplayProducts.as_view(), name='listview_display'),
     #path('all/<int:id>/detail', views.DetailsProduct.as_view(), name='detail_view')
 ]
