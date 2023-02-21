@@ -50,11 +50,6 @@ def all_products(request):
 
     opinions = ""       #[generate_opinions(x) for x in prod]
     marks = generate_all_marks()
-    print(marks)
-    for opdsa in op:
-        print(opdsa)
-    for i in prod:
-        print(i)
 
     try:
         username = request.session.__getitem__('username')
@@ -140,9 +135,9 @@ def cart_elements(request):
                 }
             else:
                 context = {
-                    'items':[],
-                    'sum':0,
-                    'finalize':False
+                    'items': [],
+                    'sum': 0,
+                    'finalize': False
                 }
         except ValueError:
             print("Value error")

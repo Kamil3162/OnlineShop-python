@@ -5,6 +5,7 @@ from django.core.validators import (MaxValueValidator,
                                     MinLengthValidator)
 from django.shortcuts import redirect
 from MainPart.models import CustomUser
+from django import forms
 # Create your models here.
 
 
@@ -35,7 +36,7 @@ class Product(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField(max_length=500)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='photos', blank=True)
+    image = models.ImageField(upload_to='', blank=True)
     available = models.BooleanField(default=True)
     price = models.DecimalField(max_digits=6, decimal_places=2)
     producer = models.ForeignKey(Producer, on_delete=models.CASCADE)
@@ -159,4 +160,35 @@ class Complain(models.Model):
     description = models.CharField(max_length=200, blank=True)
     date_created = models.DateField(auto_now_add=True)
 
+
+class CardPayment(models.Model):
+    card_number = models.IntegerField()
+    safe_code = models.IntegerField(
+        validators=[
+            MaxValueValidator(999),
+            MinValueValidator(000),
+
+        ]
+    )
+    expired_year = models.IntegerField(blank=False, validators=[MinValueValidator(2023),
+                                                                MaxValueValidator(2028)])
+    expired_month = models.IntegerField(blank=False, validators=[MinValueValidator(1),
+                                                                 MaxValueValidator(12)])
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    order = models.ForeignKey(Order, on_delete=models.CASCADE)
+
+class Payment(models.Model):
+    order = models.ForeignKey(Order, on_delete=models.CASCADE, blank=False)
+    credit_card = models.ForeignKey(CardPayment, models.CASCADE, blank=True)
+    door_payment = models.BooleanField(default=True)
+    amount = models.DecimalField(max_digits=7, decimal_places=2)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, blank=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def calculate_amount(self):
+        value = 0
+        for item in OrderItem.objects.get(order=self.order):
+            value = value + item.product.price * item.quantity
+        self.amount = value
+        return value
 

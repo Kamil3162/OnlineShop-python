@@ -1,4 +1,6 @@
 from django.urls import path
+from django.conf.urls.static import static
+from django.conf import settings
 from . import views
 
 urlpatterns = [
@@ -15,4 +17,4 @@ urlpatterns = [
     path('all/complains/', views.ReplyComplains.as_view(), name='product_complain')
     #path('all/listview', views.DisplayProducts.as_view(), name='listview_display'),
     #path('all/<int:id>/detail', views.DetailsProduct.as_view(), name='detail_view')
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

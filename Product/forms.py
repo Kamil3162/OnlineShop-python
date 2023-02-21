@@ -1,5 +1,6 @@
 from .models import (ShipAddress,
-                     Rate)
+                     Rate,
+                     CardPayment)
 from django import forms
 
 
