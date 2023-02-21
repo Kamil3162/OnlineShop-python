@@ -71,6 +71,10 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'MainPart.views.access_categories'
             ],
+            'libraries': {
+                'dictionary_value': 'Product.templatetags.simple_tags',
+
+            }
         },
     },
 ]

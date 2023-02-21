@@ -1,5 +1,6 @@
 {% extends 'Base.html' %}
 {% load static %}
+{% load simple_tags %}
 {% block products %}
     <link rel="stylesheet" href="/static/products.css">
     <div class="all-products">
@@ -9,6 +10,7 @@
         {% for item in data %}
             <div class="product_control">
                 {{ item }} {{ item.price }}
+                {{ opinion|dictionary_value:item.name }}
                 <button data-product="{{ item.id }}">
                     <a href="{% url 'product_view' item.id %}">View</a>
                 </button>

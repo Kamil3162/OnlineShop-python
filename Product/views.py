@@ -41,10 +41,11 @@ def all_products(request):
         return average_mark/len(rates)
 
     def generate_all_marks():
-        generated_marks = list()
+        generated_marks = {}
         for product in prod:
             result = generate_average_rate(product)
-            generated_marks.append(result)
+            key = str(product.name)
+            generated_marks[key] = result
         return generated_marks
 
     opinions = ""       #[generate_opinions(x) for x in prod]
@@ -60,6 +61,7 @@ def all_products(request):
     except KeyError:
         print("Key is null")
     return render(request, 'product/all_products.html', {'data': prod,
+                                                         'opinion': marks,
                                                          'opinions': opinions})
 class Product_details(View):
     def get(self, request, id):
