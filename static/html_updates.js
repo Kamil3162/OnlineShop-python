@@ -26,3 +26,33 @@ function rate_from_active(){
         form.style.visibility = "hidden";
     }
 }
+
+function checkFunction(){
+    var door_pay = document.getElementById('door-payment');
+    var card_form = document.getElementsByClassName('card-form');
+    if (door_pay.checked || !door_pay.checked){
+        door_pay.checked = false;
+        if (card_form){
+            console.log("detected");
+            card_form[0].style.visibility = "visible";
+        }
+        console.log("esa click 1");
+    }
+
+}
+
+function checkFunction1(){
+    var door_pay = document.getElementById('door-payment');
+    var card_pay = document.getElementById('card-payment');
+    var card_form = document.getElementsByClassName('card-form');
+
+    if (card_pay.checked || !card_pay.checked){
+        card_pay.checked = false;
+        door_pay.checked= true;
+        console.log("esa click 2");
+         if (card_form){
+            console.log("detected");
+            card_form[0].style.visibility = "hidden";
+        }
+    }
+}

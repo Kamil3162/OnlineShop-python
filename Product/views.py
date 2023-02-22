@@ -15,7 +15,8 @@ from MainPart.models import CustomUser
 
 from .forms import (RateForm,
                     ShipForm,
-                    ComplainForm)
+                    ComplainForm,
+                    CardForm)
 from django.core import exceptions
 def generate_opinions(query:Rate):
     final_opinion = 0
@@ -240,6 +241,14 @@ def cart_count_minus(request, id_prod):
 
 
 def finalize_order(request):
+    """
+    Function to finilize the order, first we get a forms to apply data,
+    according to delivery addres etc and next we have a form to input
+    our card data to make a payment using ethernet but we have,
+
+    We have to options to pay using ethernet or pay to door.
+    Choosing of this option depend on generated option.
+    """
     if request.method == "POST":
         if request.user.is_authenticated:
             user_object = CustomUser.objects.get(email=request.session.get('username'))
@@ -266,13 +275,15 @@ def finalize_order(request):
             return redirect('cart')
     else:
         delivery_form = ShipForm()
+        card_form = CardForm()
         user_object = CustomUser.objects.get(email=request.session.get('username'))
         order = Order.objects.get(customer=user_object, complete=False)
         order_items = OrderItem.objects.filter(order=order)
         context = {
             'items': order_items,
             'value': calculate_sum(order_items),
-            'form': delivery_form
+            'form': delivery_form,
+            'card_form': card_form
         }
     return render(request, 'FinalOrder.html', context)
 

@@ -6,7 +6,9 @@ from .models import (Product,
                      Order,
                      OrderItem,
                      ShipAddress,
-                     Complain)
+                     Complain,
+                     Payment,
+                     CardPayment)
 
 admin.site.register(Producer)
 
@@ -42,3 +44,12 @@ class ComplainApplyAdmin(admin.ModelAdmin):
     list_display = ['user', 'product', 'subject', 'order', 'date_created']
     search_fields = ['user']
 
+@admin.register(Payment)
+class PaymentAdmin(admin.ModelAdmin):
+    list_display = ['order', 'credit_card', 'door_payment', 'user']
+    search_fields = ['user', 'order']
+
+@admin.register(CardPayment)
+class CardPaymentAdmin(admin.ModelAdmin):
+    list_display = ['card_number', 'user']
+    search_fields = ['user']

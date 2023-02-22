@@ -1,6 +1,8 @@
 {% extends 'Base.html' %}
 
+{% load static %}
 {% block final_order %}
+    <script src="{% static 'html_updates.js' %}"></script>
     {% for order in items %}
         {{ order.product.name }} {{ order.product.price }} {{ order.quantity }}
     {% endfor %}
@@ -10,7 +12,20 @@
 
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
+        <div class="delivery-form">
+            {{ form.as_p }}
+            <label>
+              <input type="checkbox" id="card-payment" onclick="checkFunction()">
+                Card payment
+            </label>
+            <label>
+              <input type="checkbox" id="door-payment" onclick="checkFunction1()">
+                Door payment
+            </label>
+            <div class="card-form">
+                {{ card_form.as_p }}
+            </div>
+        </div>
         <button type="submit">Apply</button>
     </form>
 {% endblock %}

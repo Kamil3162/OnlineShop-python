@@ -163,19 +163,12 @@ class Complain(models.Model):
 
 class CardPayment(models.Model):
     card_number = models.IntegerField()
-    safe_code = models.IntegerField(
-        validators=[
-            MaxValueValidator(999),
-            MinValueValidator(000),
-
-        ]
-    )
+    safe_code = models.CharField(max_length=3)
     expired_year = models.IntegerField(blank=False, validators=[MinValueValidator(2023),
                                                                 MaxValueValidator(2028)])
     expired_month = models.IntegerField(blank=False, validators=[MinValueValidator(1),
                                                                  MaxValueValidator(12)])
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
-    order = models.ForeignKey(Order, on_delete=models.CASCADE)
 
 class Payment(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE, blank=False)
@@ -190,5 +183,4 @@ class Payment(models.Model):
         for item in OrderItem.objects.get(order=self.order):
             value = value + item.product.price * item.quantity
         self.amount = value
-        return value
 

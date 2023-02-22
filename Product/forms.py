@@ -38,3 +38,8 @@ class ComplainForm(forms.Form):
     description = forms.CharField(max_length=200, widget=forms.Textarea)
 
 
+class CardForm(forms.ModelForm):
+    class Meta:
+        model = CardPayment
+        exclude = ('user',)
+
