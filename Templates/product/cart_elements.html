@@ -2,7 +2,10 @@
 {% load static %}
 {% block cart_elements %}
     <link rel="stylesheet" href="/static/base.css">
-    {% for element in items %}
+    {% if information %}
+        {{ information }}
+    {% else %}
+        {% for element in items %}
         {{ element.product.price }} {{ element.price }} {{ element.quantity }}
         <button class="cart-add" onclick="quantity_modifier_add()" name="add">
             <a href="{% url 'adding_cart' element.product.id %}">Add</a>
@@ -17,13 +20,14 @@
         </button>
         <br>
 
-    {% endfor %}
-    Sum {{ sum }}
-    <a href="{% url 'order_final' %}">
-    <button>
-        Finalize
-    </button>
-    </a>
+        {% endfor %}
+        Sum {{ sum }}
+        <a href="{% url 'order_final' %}">
+        <button>
+            Finalize
+        </button>
+        </a>
+    {% endif %}
     <button>
         <a href="{% url 'all_products' %}">Continue</a>
     </button>

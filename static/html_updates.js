@@ -56,3 +56,27 @@ function checkFunction1(){
         }
     }
 }
+
+function paymentChoose(){
+    var door_pay = document.getElementById('door-payment');
+    var card_pay = document.getElementById('card-payment');
+    const checkBoxes = document.querySelectorAll('input[type="checkbox"]');
+    if (!door_pay.checked && !card_pay.checked){
+        alert("Pls zaznacz cos gosciu kolorowy");
+        return;
+    }
+}
+
+function validation(){
+    alert("Twoj stary pijany")
+    const form = document.querySelector('#form');
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const checkboxes = form.querySelectorAll('input[type="checkbox"]');
+        if (!Array.from(checkboxes).some(checkbox => checkbox.checked)) {
+            alert('Please select at least one checkbox.');
+            location.reload();
+
+      }
+    });
+}

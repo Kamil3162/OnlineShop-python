@@ -1,6 +1,7 @@
 from typing import List
 
 from django.core.exceptions import ObjectDoesNotExist
+from django.http import JsonResponse
 from django.shortcuts import (render,
                               redirect,
                               get_object_or_404)
@@ -10,7 +11,8 @@ from .models import (Product,
                      OrderItem,
                      Order,
                      Rate,
-                     Complain)
+                     Complain,
+                     CardPayment)
 from MainPart.models import CustomUser
 
 from .forms import (RateForm,
@@ -125,7 +127,8 @@ def cart_elements(request):
                 This part is responsible for search product using PK in ordersItem
                 Next we are displaying these items using for loop 
             '''
-            order = get_object_or_404(Order, customer=customer, complete=False)
+            order = Order.objects.get(customer=customer, complete=False)
+            print(order)
             if order.complete is False:
                 allow = True
                 items = order.orderitem_set.all()
@@ -140,12 +143,12 @@ def cart_elements(request):
                     'sum': 0,
                     'finalize': False
                 }
-        except ValueError:
-            print("Value error")
-            return redirect('information')
+
         except ObjectDoesNotExist:
-            print("object dopest not exist")
-            return redirect('information')
+            context = {
+                'information': "Your bucket is empty order something"
+            }
+            return render(request, 'product/cart_elements.html', context)
         return render(request, 'product/cart_elements.html', context)
     else:
         context = {
@@ -251,8 +254,10 @@ def finalize_order(request):
     """
     if request.method == "POST":
         if request.user.is_authenticated:
+            print(request.POST.get("payment"))
+            print(request.POST.get("payment1"))
             user_object = CustomUser.objects.get(email=request.session.get('username'))
-            order = Order.objects.get(customer=user_object)
+            order = Order.objects.get(customer=user_object, complete=False)
             delivery_form = ShipForm(request.POST)
 
             if delivery_form.is_valid():
@@ -274,7 +279,7 @@ def finalize_order(request):
         else:
             return redirect('cart')
     else:
-        delivery_form = ShipForm()
+        #delivery_form = ShipForm()
         card_form = CardForm()
         user_object = CustomUser.objects.get(email=request.session.get('username'))
         order = Order.objects.get(customer=user_object, complete=False)
@@ -282,10 +287,40 @@ def finalize_order(request):
         context = {
             'items': order_items,
             'value': calculate_sum(order_items),
-            'form': delivery_form,
+            #'form': delivery_form,
             'card_form': card_form
         }
     return render(request, 'FinalOrder.html', context)
+
+def validate_card(request):
+    print(request.POST.get("card_number"))
+    print(request.POST.get("safe_code"))
+    print(request.POST.get("expired_year"))
+    print(request.POST.get("expired_month"))
+    user = CustomUser.objects.get(email=request.session.get('username'))
+
+    form_data = CardForm(request.POST)
+    data = {
+        'good': False
+    }
+    if request.method == "POST":
+        card_form = CardPayment.objects.all().filter(
+            card_number=request.POST.get("card_number"),
+            safe_code=request.POST.get("safe_code"),
+            expired_year=request.POST.get("expired_year"),
+            expired_month=request.POST.get("expired_month"),
+            user=user
+        )
+        if not card_form:
+            if form_data.is_valid():
+                print('esa1')
+
+                bb = form_data.save(commit=False)
+                bb.user = user
+                bb.save()
+                data['good'] = True
+    return JsonResponse(data)
+
 
 def finalize_success(request):
     return render(request, 'product/success_information.html')
