@@ -42,10 +42,10 @@
     {% block listview %}
     {% block product_detail %}
 
-        <div class="category_panel">
-            {% include 'product/categories.html' %}
-        </div>
-        <div class="content">
+    <div class="category_panel">
+        {% include 'product/categories.html' %}
+    </div>
+    <div class="content">
             {% block category_products %}
     {% block success %}
     {% block final_order %}
@@ -69,11 +69,13 @@
     {% endblock %}
     {% endblock %}
     {% endblock %}
-        </div>
+    </div>
 
     </div>
     <div class="footer">
-        footer
+        <div class="tasks">Taska</div>
+        <div class="social">Social Media</div>
+        <div class="">Esa</div>
     </div>
 </body>
 </html>

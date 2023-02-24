@@ -12,7 +12,6 @@ urlpatterns = [
     path('all/cart/<int:id_prod>/minus', views.cart_count_minus, name='minus_cart'),
     path('all/cart/<int:id_prod>/add', views.cart_count_add, name='adding_cart'),
     path('all/cart/finilize', views.finalize_order, name='order_final'),
-    path('all/cart/finilize/validate', views.validate_card, name='order_final_validate'),
     path('all/cart/finilize/success', views.finalize_success, name='order_finish_panel'),
     path('all/category/<str:nazwa>', views.category_products, name='product_category'),
     path('all/complains/', views.ReplyComplains.as_view(), name='product_complain')

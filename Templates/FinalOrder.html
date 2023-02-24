@@ -11,7 +11,7 @@
 
     {{ value }}
 
-    <form method="post" id="form" action="{% url 'order_final_validate' %}">
+    <form method="post" id="form">
         {% csrf_token %}
         <div class="delivery-form">
             {{ form.as_p }}
@@ -29,6 +29,7 @@
         </div>
         <button type="submit">Apply</button>
     </form>
+    <h2></h2>
 {% endblock %}
 
 <script>
@@ -59,20 +60,9 @@
         fetch('{% url 'order_final_validate' %}',{
             method:"POST",
             body:formData,
-            success: function (response){
-                if (response.data.get('good')){
-                    console.log("esa")
-                    window.location.href = 'all/cart/finilize/success/';
-                }
-                else {
-                    location.reload()
-                }
+            success: function (body) {
+                $('h2').html(body);
             }
         });
-        /*
-        .then(response => response.json())
-        .then(data => {
-            console.log(data.status);
-        })*/
     });
 </script>

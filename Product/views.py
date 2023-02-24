@@ -1,7 +1,7 @@
 from typing import List
 
 from django.core.exceptions import ObjectDoesNotExist
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.shortcuts import (render,
                               redirect,
                               get_object_or_404)
@@ -253,14 +253,17 @@ def finalize_order(request):
     Choosing of this option depend on generated option.
     """
     if request.method == "POST":
+        print(request.POST)
         if request.user.is_authenticated:
-            print(request.POST.get("payment"))
+            card_pay = request.POST.get("payment1")
+            door_pay = request.POST.get("payment")
             print(request.POST.get("payment1"))
             user_object = CustomUser.objects.get(email=request.session.get('username'))
             order = Order.objects.get(customer=user_object, complete=False)
             delivery_form = ShipForm(request.POST)
-
-            if delivery_form.is_valid():
+            card_form = CardForm(request.POST)
+            print('rozpoczenie validacji')
+            if (delivery_form.is_valid() and card_form.is_valid()) and (door_pay or card_pay):
                 """
                     Each field have a data what we want
                     Problem is according to save this in mysql 
@@ -275,11 +278,11 @@ def finalize_order(request):
                 order.save()
                 return redirect('order_finish_panel')
             else:
-                return redirect('information')
+                return redirect('order_final')
         else:
             return redirect('cart')
     else:
-        #delivery_form = ShipForm()
+        delivery_form = ShipForm()
         card_form = CardForm()
         user_object = CustomUser.objects.get(email=request.session.get('username'))
         order = Order.objects.get(customer=user_object, complete=False)
@@ -287,7 +290,7 @@ def finalize_order(request):
         context = {
             'items': order_items,
             'value': calculate_sum(order_items),
-            #'form': delivery_form,
+            'form': delivery_form,
             'card_form': card_form
         }
     return render(request, 'FinalOrder.html', context)
@@ -306,10 +309,6 @@ def validate_card(request):
     if request.method == "POST":
         card_form = CardPayment.objects.all().filter(
             card_number=request.POST.get("card_number"),
-            safe_code=request.POST.get("safe_code"),
-            expired_year=request.POST.get("expired_year"),
-            expired_month=request.POST.get("expired_month"),
-            user=user
         )
         if not card_form:
             if form_data.is_valid():
@@ -319,7 +318,13 @@ def validate_card(request):
                 bb.user = user
                 bb.save()
                 data['good'] = True
-    return JsonResponse(data)
+                return redirect('order_finish_panel')
+    data = {
+        'success': 'Your card exist in database',
+        'card_form': CardForm()
+    }
+
+    return render(request, 'FinalOrder.html', data)
 
 
 def finalize_success(request):
@@ -329,7 +334,7 @@ def category_products(request, nazwa):
     category = Category.objects.get(name=nazwa)
     products = Product.objects.filter(category=category)
     context = {
-        'products':products,
+        'products': products,
     }
     return render(request, 'Category.html', context)
 

@@ -1,16 +1,23 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Roboto+Mono:wght@300&display=swap');
+/*    font-family: 'Roboto Mono', monospace;
+      font-family: 'Montserrat', sans-serif;
+ */
 h1{
     color: red;
+    text-align: center;
 }
 /* part responsible for Base view of page */
 .navbar{
     height: 100px;
 }
+/* part of main content*/
 
 .main-content{
     height: 600px;
     font-family: 'Roboto Mono', monospace;
     color: cornsilk;
+    display: grid;
+    grid-template-columns: 2fr 8fr;
 }
 /* part of cart*/
 .cart-remove{
@@ -22,6 +29,9 @@ h1{
 
 .footer{
     height: 300px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    text-align: center;
 }
 
 /* body part */
@@ -32,3 +42,32 @@ background-image: linear-gradient(94deg, rgba(89, 164, 252, 1) 0%, rgba(41, 53, 
 
 }
 
+/* category panel  */
+.category_panel{
+    clear:both;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    display: block;
+}
+.category_panel button{
+    text-decoration: none;
+    text-align: center;
+    padding: 10px;
+    border-radius: 15px;
+    font-weight: 1000;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    width: 160px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.category_panel a{
+    text-decoration: none;
+}
+
+/* content options*/
+.content .all-products{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
