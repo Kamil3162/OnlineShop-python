@@ -3,6 +3,10 @@
 {% block category_products %}
     {% for product in products %}
         {{ product }}
+        <img src="{{ product.image.url }}" width="120">
+        <button>
+            <a href="{% url 'product_view' product.pk %}">View</a>
+        </button>
         <br>
     {% endfor %}
 {% endblock %}

@@ -8,18 +8,8 @@
 </head>
 <body>
     <div class="navbar">
-        logo
-        <div class="login_panel">
-            {% if request.user.is_authenticated %}
-                Siema skurwysynie
-                <a href="{% url 'log_out'%}">
-                    <button>LogOut</button>
-                </a>
-                {% else %}
-                <a href="{% url 'login'%}">
-                    <button>Zaloguj sie</button>
-                </a>
-            {% endif %}
+        <div class="others">
+            <img src="">
             <a href="{% url 'cart' %}">
                 <button class="koszyk">Bucket</button>
             </a>
@@ -29,37 +19,57 @@
             <a href="{% url 'information' %}">
                 <button class="koszyk">Home</button>
             </a>
-            <a href="{% url 'registration' %}">
-                <button class="koszyk">Registration</button>
-            </a>
+
             <a href="{% url 'product_complain' %}">
                 <button class="koszyk">Complain</button>
             </a>
         </div>
+        <div class="login_panel">
+            {% if request.user.is_authenticated %}
+                <p>Siema skurwysynie</p>
+                <a href="{% url 'log_out'%}">
+                    <button class="logout">LogOut</button>
+                </a>
+                {% else %}
+                <a href="{% url 'login'%}">
+                    <button class="login">Zaloguj sie</button>
+                </a>
+            {% endif %}
+            <a href="{% url 'registration' %}">
+                <button class="register">Registration</button>
+            </a>
+        </div>
     </div>
+
     <div class="main-content">
     {% block complain %}
     {% block listview %}
     {% block product_detail %}
+    {% block register %}
+    {% block login %}
+        {% block cart_elements %}
+        <div class="components">
 
-    <div class="category_panel">
-        {% include 'product/categories.html' %}
-    </div>
-    <div class="content">
-            {% block category_products %}
+        <div class="category_panel">
+            {% include 'product/categories.html' %}
+        </div>
+
+        <div class="content">
+    {% block category_products %}
     {% block success %}
     {% block final_order %}
     {% block detailview %}
+    {% block bucket %}
 
-    {% block cart_elements %}
-    {% block login %}
-        {% block products %}
-        {% block register %}
-            {% block bucket %}
+    {% block products %}
+                <div class="text">
+                <h1>Hi nice to see you</h1>
+                <p>Im glad that you are here on my first online shop,</p>
+                <p>Last discount:</p>
+                {% include 'product/discounted_products.html' %}
+                </div>
+        </div>
 
-            {% endblock %}
-        {% endblock %}
-        {% endblock %}
     {% endblock %}
     {% endblock %}
     {% endblock %}
@@ -69,7 +79,11 @@
     {% endblock %}
     {% endblock %}
     {% endblock %}
-    </div>
+    {% endblock %}
+    {% endblock %}
+    {% endblock %}
+        </div>
+        </div>
 
     </div>
     <div class="footer">

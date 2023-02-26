@@ -2,6 +2,11 @@
 /*    font-family: 'Roboto Mono', monospace;
       font-family: 'Montserrat', sans-serif;
  */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Roboto+Mono:wght@300&display=swap');
+/*
+font-family: 'Montserrat', sans-serif;
+font-family: 'Roboto Mono', monospace;
+*/
 h1{
     color: red;
     text-align: center;
@@ -9,15 +14,46 @@ h1{
 /* part responsible for Base view of page */
 .navbar{
     height: 100px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 15px;
+}
+.others{
+    margin-left: 30%;
+}
+.navbar button{
+    font-family: 'Roboto Mono', monospace;
+    font-size: 18px;
+    padding: 10px;
+    font-weight: 800;
+    background-color: inherit;
+    border:none;
+    color: white;
+
+}
+.navbar button:hover{
+    background-color: white;
+    color: black;
+    border-radius: 15px;
+}
+
+.navbar a{
+    text-decoration: none;
+    color: white;
+}
+.login_panel{
+    text-align: right;
 }
 /* part of main content*/
-
+.components{
+    display: grid;
+    grid-template-columns: 2fr 8fr;
+}
 .main-content{
     height: 600px;
     font-family: 'Roboto Mono', monospace;
     color: cornsilk;
     display: grid;
-    grid-template-columns: 2fr 8fr;
 }
 /* part of cart*/
 .cart-remove{
@@ -37,8 +73,8 @@ h1{
 /* body part */
 body{
    background-color: rgba(89, 164, 252, 1);
-background-image: linear-gradient(94deg, rgba(89, 164, 252, 1) 0%, rgba(41, 53, 86, 1) 89%);
-        background-repeat: no-repeat;
+    background-image: linear-gradient(94deg, rgba(89, 164, 252, 1) 0%, rgba(41, 53, 86, 1) 89%);
+    background-repeat: no-repeat;
 
 }
 
@@ -49,25 +85,49 @@ background-image: linear-gradient(94deg, rgba(89, 164, 252, 1) 0%, rgba(41, 53, 
     margin-bottom: 20px;
     text-align: center;
     display: block;
+    border-right: 2px solid black;
+
 }
 .category_panel button{
     text-decoration: none;
     text-align: center;
-    padding: 10px;
-    border-radius: 15px;
+    padding: 25px;
     font-weight: 1000;
     font-family: 'Montserrat', sans-serif;
     font-size: 20px;
     width: 160px;
-    margin-top: 5px;
-    margin-bottom: 5px;
+    background-color: inherit;
+    border: none;
 }
+.category_panel button:hover{
+    background-color: white;
+    width: 100%;
+    color: black;
+}
+
 .category_panel a{
     text-decoration: none;
 }
-
+.dropdown_content{
+    display: none;
+}
+.dropdown:hover .dropdown_content{
+    display: block;
+    background-color: rgba(0,0,0,0.1);
+    color:black;
+}
+.dropdown:hover .dropdown_content a{
+    color:black;
+}
+.dropdown:hover {
+    background-color: rgba(0,0,0,0.3);
+}
 /* content options*/
-.content .all-products{
+
+.all_products{
     display: grid;
     grid-template-columns: 1fr 1fr;
+}
+.content{
+    padding: 40px;
 }

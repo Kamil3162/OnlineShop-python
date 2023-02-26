@@ -1,11 +1,14 @@
 
-
-{% for category in categories %}
-    <button>
-         <a href="{% url 'product_category' category %}">
-            {{ category }}
-        </a>
-    </button>
-    <br>
-{% endfor %}
+<div class="dropdown">
+<button class="dropbtn">Kategorie</button>
+<br>
+    <div class="dropdown_content">
+        {% for category in categories %}
+            <button>
+                <a href="{% url 'product_category' category %}">{{ category }}</a>
+            </button>
+        <br>
+        {% endfor %}
+    </div>
+</div>
 

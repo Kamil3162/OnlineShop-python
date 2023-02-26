@@ -2,35 +2,50 @@
 {% load static %}
 {% block cart_elements %}
     <link rel="stylesheet" href="/static/base.css">
-    {% if information %}
-        {{ information }}
-    {% else %}
-        {% for element in items %}
-        {{ element.product.price }} {{ element.price }} {{ element.quantity }}
-        <button class="cart-add" onclick="quantity_modifier_add()" name="add">
-            <a href="{% url 'adding_cart' element.product.id %}">Add</a>
-        </button>
-        <button class="cart-minus" onclick="quantity_modifier_minus()" name="minus">
-            <a href="{% url 'minus_cart' element.product.id %}">Minus</a>
-        </button>
+    <div class="cart-elements">
+        <div class="cart-products">
+            {% if information %}
+            {{ information }}
+        {% else %}
+            {% for element in items %}
+                <div class="item_info" style="display: inline-block">
+                    <label id="price">
+                    {{ element.product.price }}
+                    </label>
+                    <button class="cart-add" onclick="quantity_modifier_add()" name="add">
+                        <a href="{% url 'adding_cart' element.product.id %}">Add</a>
+                    </button>
+                    <button class="cart-minus" onclick="quantity_modifier_minus()" name="minus">
+                        <a href="{% url 'minus_cart' element.product.id %}">Minus</a>
+                    </button>
 
-        <input type="text" value="{{ element.quantity }}" name="element-quantity">
-        <button>
-        <a href="{% url 'del_cart' element.product.id %}">Delete</a>
-        </button>
-        <br>
+                    <input type="text" value="{{ element.quantity }}" name="element-quantity">
+                    <button>
+                    <a href="{% url 'del_cart' element.product.id %}">Delete</a>
+                    </button>
+                </div>
+            <br>
+        </div>
+            {% endfor %}
+            <div id="final_prize">
+                Sum {{ sum }}
+            </div>
 
-        {% endfor %}
-        Sum {{ sum }}
-        <a href="{% url 'order_final' %}">
+            <div id="btn_final">
+                <a href="{% url 'order_final' %}">
+                    <button>
+                        Finalize
+                    </button>
+                </a>
+            </div>
+
+        {% endif %}
         <button>
-            Finalize
+            <a href="{% url 'all_products' %}">Continue</a>
         </button>
-        </a>
-    {% endif %}
-    <button>
-        <a href="{% url 'all_products' %}">Continue</a>
-    </button>
+    </div>
+
+
 {% endblock %}
 
 

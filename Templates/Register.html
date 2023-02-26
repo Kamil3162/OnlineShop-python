@@ -3,7 +3,11 @@
 {% block register %}
     <form action="{% url 'registration' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ register }}
+        {% for field in register %}
+            <label>{{ field.label }}</label>
+            {{ field }}
+            <br>
+        {% endfor %}
         <button type="submit" name="register">Register</button>
     </form>
 {% endblock %}

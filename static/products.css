@@ -7,4 +7,14 @@
 .all-products{
     color: cornsilk;
     font-family: 'Roboto Mono', monospace;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows:140px;
+    grid-auto-rows: auto;
+    grid-gap: 10px;
+}
+
+.product_control{
+    display: block;
+    text-align: center;
 }
