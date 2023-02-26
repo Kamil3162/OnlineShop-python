@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Roboto+Mono:wght@300&display=swap');
+/*    font-family: 'Roboto Mono', monospace;
+      font-family: 'Montserrat', sans-serif;
+ */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Roboto+Mono:wght@300&display=swap');
+/*
+font-family: 'Montserrat', sans-serif;
+font-family: 'Roboto Mono', monospace;
+*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Roboto+Mono:wght@300&display=swap');
+/*
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Roboto Mono', monospace;
+*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Roboto+Mono:ital,wght@0,300;0,500;1,200&display=swap');
+
+
+.cart-elements{
+    padding: 40px;
+}
+.cart-products{
+    height: 15%;
+}
+.cart-add{
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 20px;
+    text-align: center;
+    padding: 10px;
+    width: 100px;
+    border: none;
+    background-color: inherit;
+}
+.cart-add a{
+    text-decoration: none;
+
+}
+.item_info {
+    margin-bottom: 100px;
+}
+.cart-minus{
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 20px;
+    text-align: center;
+    padding: 10px;
+    width: 100px;
+    background-color: inherit;
+    border: none;
+}
+.cart-minus a{
+    text-decoration: none;
+}
+.item_info{
+    display: inline-block;
+}
+#price{
+    color: white;
+    font-size: 20px;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 600;
+    margin-top: 0;
+}
+
+
