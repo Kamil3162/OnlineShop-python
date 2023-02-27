@@ -8,13 +8,13 @@
             <div class="product_control">
                 <div class="name">{{ item }}</div>
                 <div class="photo">
-                    <img src="{{ item.image.url }}" width="60%" style="justify-items: center">
+                    <img src="{{ item.image.url }}" width="60%" height="70%" style="justify-items: center">
                 </div>
                 <div class="average_mark">
-                    {{ opinion|dictionary_value:item.name }}
+                    Rate:{{ opinion|dictionary_value:item.name }}
                 </div>
                 <div class="price">
-                    {{ item.price }}
+                    {{ item.price }}zł
                 </div>
                 <button data-product="{{ item.id }}">
                     <a href="{% url 'product_view' item.id %}">View</a>
