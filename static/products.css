@@ -62,3 +62,8 @@ button a{
     color: black;
     font-weight: 600;
 }
+
+.discount_product{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}

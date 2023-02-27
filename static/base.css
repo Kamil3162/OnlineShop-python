@@ -59,6 +59,7 @@ h1{
 }
 .main-content{
     height: 600px;
+    width: 100%;
     font-family: 'Roboto Mono', monospace;
     color: cornsilk;
     display: grid;

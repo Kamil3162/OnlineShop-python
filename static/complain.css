@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
+/* font-family=Kanit;*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200&family=Montserrat:wght@200&family=Mulish:wght@600&display=swap');
+
+#complain{
+    margin-left: 20%;
+    display: block;
+}
+
+#complain label{
+    text-align: center;
+    font-family: 'Mulish', sans-serif;
+    font-size: 17px;
+    width: 30px;
+}
+
+#complain input{
+    background-color: wheat;
+    font-family:'Kanit', sans-serif;
+    color: black;
+    height: 20px;
+    width: 50%;
+    border-radius: 15px;
+    border:2px solid black;
+    padding: 10px;
+
+}
+form{
+    height: 100%;
+}
+textarea{
+    width: 50%;
+    height: 250px;
+    font-size: 15px;
+}
+select{
+    font-size: 20px;
+    font-family: "Roboto", "Lucida Grande", Verdana, Arial, sans-serif;
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+#complain button{
+    margin-left: 30%;
+    font-family: 'Mulish', sans-serif;
+    font-size: 20px;
+    width: 150px;
+    padding: 10px;
+    border-radius: 20px;
+    box-shadow: 5px 5px 10px 2px rgba(0,0,0,1);
+
+}
+#complain button:hover {
+    background-color: green;
+    color: white;
+    border: none;
+}

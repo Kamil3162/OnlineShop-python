@@ -1,12 +1,13 @@
 {% extends 'Base.html' %}
-
 {% block complain %}
-    <form action="{% url 'product_complain' %}" method="post">
-        {% csrf_token %}
-        {{ complain.as_p }}
-        <button type="submit">
-            Report
-        </button>
-    </form>
-
+    <link rel="stylesheet" href="/static/complain.css">
+    <div id="complain">
+        <form action="{% url 'product_complain' %}" method="post">
+            {% csrf_token %}
+            {{ complain.as_p }}
+            <button type="submit">
+                Report
+            </button>
+        </form>
+    </div>
 {% endblock %}
