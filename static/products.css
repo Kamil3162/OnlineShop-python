@@ -9,7 +9,7 @@
     font-family: 'Roboto Mono', monospace;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows:140px;
+    grid-template-rows:250px;
     grid-auto-rows: auto;
     grid-gap: 10px;
 }
@@ -17,4 +17,48 @@
 .product_control{
     display: block;
     text-align: center;
+    background-color: white;
+    border-radius: 10px;
+}
+.name{
+    color: black;
+    font-weight: 600;
+    font-size: 18px;
+}
+.photo{
+    height: 60%;
+}
+.photo img{
+    height: 80%;
+}
+button{
+    font-size: 17px;
+    font-weight: 600;
+    border-radius: 10px;
+    background-color: black;
+}
+button:hover{
+    background-color: red;
+}
+/*
+.photo{
+    width: 60%;
+    max-height: 50%;
+    text-align: center;
+}
+.photo img{
+    width: 60%;
+    text-align: center;
+}*/
+button a{
+    text-decoration: none;
+}
+.average_mark{
+    color: black;
+    font-weight: 600;
+
+}
+.price{
+    color: black;
+    font-weight: 600;
 }

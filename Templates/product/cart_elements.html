@@ -12,6 +12,7 @@
                     <label id="price">
                     {{ element.product.price }}
                     </label>
+                    <img src="{{ element.product.image.url }}">
                     <button class="cart-add" onclick="quantity_modifier_add()" name="add">
                         <a href="{% url 'adding_cart' element.product.id %}">
                             <img src="/static/icons/add.png" style="height: 50px">
@@ -22,14 +23,12 @@
                             <img src="/static/icons/minus.png" style="height: 60px">
                         </a>
                     </button>
-
                     <input type="text" value="{{ element.quantity }}" name="element-quantity">
-                    <button>
+                    <button id="delete">
                     <a href="{% url 'del_cart' element.product.id %}">Delete</a>
                     </button>
                 </div>
             <br>
-        </div>
             {% endfor %}
                 <br>
             <div id="final_prize">
