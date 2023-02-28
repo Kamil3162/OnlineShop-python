@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200&family=Montserrat:wght@200&family=Mulish:wght@600&family=Work+Sans:ital,wght@0,200;1,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;1,300&display=swap');
+/*
+    font-family: 'Rubik', sans-serif;
+
+*/
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300&family=Rubik:ital,wght@0,300;1,300&display=swap');
+/*
+    font-family: 'Hind Siliguri', sans-serif;
+*/
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Rubik:ital,wght@0,300;1,300&display=swap');
+/*
+    font-family: 'Nanum Gothic', sans-serif;
+ */
+
+.register{
+    background-color: white;
+    margin: 150px auto;
+    width: 70%;
+    height: 70%;
+    border-radius: 15px;
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+}
+body {
+    background-color: rgb(188, 190, 191);
+}
+.register #kdev{
+    font-family: 'Work Sans', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.register #entrace{
+    word-break: break-word;
+    font-size: 30px;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 800;
+    color: white;
+}
+
+.register #story{
+    word-break: break-word;
+    font-size: 20px;
+    font-family: 'Rubik', sans-serif;
+    color: white;
+}
+
+.home{
+    width: 80%;
+    padding: 20px;
+    background-color: #5069ff;
+    border-radius: 20px;
+    margin: 10px;
+    -webkit-box-sizing: border-box;
+}
+.content-register{
+    padding: 30px;
+}
+
+#log-in{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    width: 100%;
+
+}
+.btn{
+    border-radius: 15px;
+    border: none;
+    text-decoration: none;
+    background-color: coral;
+    font-size: 15px;
+    font-family: 'Hind Siliguri', sans-serif;
+    font-weight: 800;
+    width: 100px;
+    height: 40px;
+
+}
+
+#info{
+    font-size: 15px;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 800;
+
+}
+#register-btn{
+}
+.btn-register{
+    color: white;
+    width: 200px;
+    font-size: 17px;
+    margin-top: 30px;
+
+}
+.btn-register:hover{
+    font-weight: 1000;
+    border: 3px solid black;
+}
+.btn a{
+    text-decoration: none;
+    color: white;
+
+
+}
+.container-register label{
+    font-family: 'Nanum Gothic', sans-serif;
+    margin-bottom: 10px;
+    color: #1f1818;
+
+}
+.container-register{
+    display: block;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.container-register input{
+    width: 80%;
+    height: 40px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 3px solid rgb(188, 190, 191);
+    margin-top: 5px;
+}
+.content-register #title{
+    font-size: 35px;
+    font-weight: 800;
+    font-family: 'Hind Siliguri', sans-serif;
+    margin-bottom: 0px;
+}
+/* responsive part */
+
+@media only screen and (max-width: 440px){
+    .home{
+        display:none;
+    }
+    .btn-register{
+        margin-top: 10px;
+    }
+    .register{
+        height: 80%;
+    }
+}
+
+
+@media only screen and (min-width: 600px){
+    .register{
+        display: block;
+    }
+    .btn-register{
+        margin-top: 10px;
+    }
+    .register{
+        height: 80%;
+    }
+}

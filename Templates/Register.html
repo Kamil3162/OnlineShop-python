@@ -1,13 +1,32 @@
-{% extends "Base.html" %}
+<link rel="stylesheet" href="/static/register.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<div class="register">
+    <div class="home">
+        <p id="kdev">KAMIL-DEV</p>
+        <p id="entrace">I hope that it will be pleasure to use my website.</p>
+        <p id="story">This is my shop platform those i created using django framework also i used javascript and Ajax. </p>
+    </div>
+    <div class="content-register">
+        <p id="title">Sing up</p>
+        <div id="log-in">
+            <p id="info">Have an account click here </p>
+            <button class="btn btn-login">
+                <a href="{% url 'login' %}">Login</a>
+            </button>
+        </div>
+        <form action="{% url 'registration' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% for field in register %}
+                <div class="container-register">
+                    <label>{{ field.label }}</label>
+                    <br>
+                    <div class="register-data">
+                        {{ field }}
+                    </div>
+                </div>
 
-{% block register %}
-    <form action="{% url 'registration' %}" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {% for field in register %}
-            <label>{{ field.label }}</label>
-            {{ field }}
-            <br>
-        {% endfor %}
-        <button type="submit" name="register">Register</button>
-    </form>
-{% endblock %}
+            {% endfor %}
+            <button type="submit" name="register" class="btn btn-register">Create account</button>
+        </form>
+    </div>
+</div>

@@ -7,39 +7,7 @@
     <title>Title</title>
 </head>
 <body>
-    <div class="navbar">
-        <div class="others">
-            <img src="">
-            <a href="{% url 'cart' %}">
-                <button class="koszyk">Bucket</button>
-            </a>
-            <a href="{% url 'all_products' %}">
-                <button class="koszyk">Products</button>
-            </a>
-            <a href="{% url 'information' %}">
-                <button class="koszyk">Home</button>
-            </a>
-
-            <a href="{% url 'product_complain' %}">
-                <button class="koszyk">Complain</button>
-            </a>
-        </div>
-        <div class="login_panel">
-            {% if request.user.is_authenticated %}
-                <p>Siema skurwysynie</p>
-                <a href="{% url 'log_out'%}">
-                    <button class="logout">LogOut</button>
-                </a>
-                {% else %}
-                <a href="{% url 'login'%}">
-                    <button class="login">Zaloguj sie</button>
-                </a>
-            {% endif %}
-            <a href="{% url 'registration' %}">
-                <button class="register">Registration</button>
-            </a>
-        </div>
-    </div>
+    {% include 'Navbar.html' %}
 
     <div class="main-content">
     {% block complain %}
