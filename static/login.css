@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200&family=Montserrat:wght@200&family=Mulish:wght@600&family=Work+Sans:ital,wght@0,200;1,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;1,300&display=swap');
+/*
+    font-family: 'Rubik', sans-serif;
+
+*/
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300&family=Rubik:ital,wght@0,300;1,300&display=swap');
+/*
+    font-family: 'Hind Siliguri', sans-serif;
+*/
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Rubik:ital,wght@0,300;1,300&display=swap');
+/*
+    font-family: 'Nanum Gothic', sans-serif;
+ */
+
+.login-panel{
+    margin: 5% auto;
+    height: 70%;
+    width: 70%;
+    background-color: black;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.login-part{
+    background-color: white;
+}
+.login-view-part{
+    background-color: white;
+    display: inline-block;
+}
+
+#kdev{
+    font-family: 'Work Sans', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    color: white;
+    margin-left: 20px;
+    margin-bottom: 30px;
+    padding: 15px;
+    border-radius: 20px;
+    background-color: #bf9281;
+    width: 120px;
+}
+
+#login-entrace{
+    word-break: break-word;
+    font-size: 30px;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 800;
+    color: black;
+    margin-left: 60px;
+    margin-bottom: 0px;
+    margin-top: 100px;
+}
+#entrace-text{
+    word-break: break-word;
+    font-size: 17px;
+    margin-left: 40px;
+    font-family: 'Rubik', sans-serif;
+    color: black;
+}
+body{
+    background-color:rgb(188,190,191);
+}
+.form-login-part{
+    background-color: #ce8e77;
+    height: 40%;
+    border-radius: 20px;
+    margin-left: 20px;
+    width: 70%;
+    padding: 40px;
+}
+form{
+    margin-top: 30px;
+}
+label{
+    font-family: 'Work Sans', sans-serif;
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+
+}
+input{
+    margin-top: 3px;
+    margin-bottom: 20px;
+    font-size: 15px;
+    padding: 7px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid black;
+    background-color: inherit;
+}
+#circle{
+    background-color: coral;
+    width: 30%;
+    height: 30%;
+    shape-outside: circle();
+    clip-path: circle();
+    margin:40px;
+    display: flex;
+}

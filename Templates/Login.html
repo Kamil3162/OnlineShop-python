@@ -1,11 +1,27 @@
-{% extends "Base.html" %}
+<link rel="stylesheet" href="/static/login.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<div class="login-panel">
+    <div class="login-part">
+        <p id="kdev">KAMIL-DEV</p>
+        <p id="login-entrace">Login</p>
+        <p id="entrace-text">Nice to see you again.</p>
+        <div class="form-login-part">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% for field in form %}
+                    <label>{{ field.name.title }}</label>
+                    <br>
+                    {{ field }}
+                    <br>
+                {% endfor %}
+                <button type="submit" class="btnlog"> Login</button>
+            </form>
+        </div>
+    </div>
+    <div class="login-view-part">
+        <div id="circle">
 
-
-{% block login %}
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form }}
-        <button type="submit" class="btnlog"> Login</button>
-
-    </form>
-{% endblock %}
+        </div>
+        <p> zdjecie koszyka </p>
+    </div>
+</div>
