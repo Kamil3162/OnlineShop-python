@@ -9,16 +9,19 @@
     font-family: 'Roboto Mono', monospace;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows:250px;
+    grid-template-rows:350px;
     grid-auto-rows: auto;
-    grid-gap: 10px;
+    grid-gap: 20px;
 }
 
 .product_control{
     display: block;
     text-align: center;
-    background-color: white;
+    background-color: #b1b1b1;
     border-radius: 10px;
+}
+.product_control img{
+
 }
 .name{
     color: black;

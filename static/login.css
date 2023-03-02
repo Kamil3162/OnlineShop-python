@@ -97,6 +97,54 @@ input{
     height: 30%;
     shape-outside: circle();
     clip-path: circle();
-    margin:40px;
+    margin:40%;
     display: flex;
+}
+.circle img{
+    background-color: black;
+}
+.btnlog{
+    background-color: #bb5f41;
+    font-size: 20px;
+    text-align: center;
+    margin-left: 25%;
+    margin-top: 30px;
+    border-radius: 20px;
+    height: 40px;
+    width: 120px;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 800;
+    color: black;
+    border: none;
+}
+.btnlog:hover{
+    background-color: #5069ff;
+    color: white;
+}
+
+@media only screen and (max-width: 440px) {
+    .login-view-part{
+        visibility: hidden;
+    }
+    .form-login-part{
+        width: 60%;
+    }
+    .btnlog{
+        margin-left: 20%;
+    }
+    #kdev{
+        margin-top: 20px;
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    .form-login-part{
+        width: 60%;
+    }
+    .btnlog{
+        margin-left: 20%;
+    }
+    .login-panel{
+        display: block;
+    }
 }
