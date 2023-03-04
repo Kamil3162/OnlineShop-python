@@ -76,8 +76,11 @@ function validation(){
         if (!Array.from(checkboxes).some(checkbox => checkbox.checked)) {
             alert('Please select at least one checkbox.');
             location.reload();
-
       }
     });
 }
+
+
+
+
 

@@ -56,3 +56,6 @@ select{
     color: white;
     border: none;
 }
+#complain p{
+    color: black;
+}

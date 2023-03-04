@@ -11,6 +11,10 @@ font-family: 'Roboto Mono', monospace;
 /*
     font-family: 'Nanum Gothic', sans-serif;
  */
+@import url('https://fonts.googleapis.com/css2?family=Dosis&display=swap');
+/*
+    font-family: 'Dosis', sans-serif;
+*/
 h1{
     color: red;
     text-align: center;
@@ -55,8 +59,19 @@ h1{
     display: flex;
     flex-direction: row;
     justify-content: right;
+    margin-right: 60px;
 }
-.login_panel
+.login_panel p{
+    font-size: 23px;
+}
+#username{
+    margin-top: 15px;
+    padding: 10px;
+    font-size: 18px;
+    color: #1fa0a6;
+    font-weight: 600;
+    font-family: 'Dosis', sans-serif;
+}
 /* part of main content*/
 .components{
     display: grid;
@@ -80,7 +95,7 @@ h1{
 /* footer part - manage*/
 
 .footer{
-    height: 200px;
+    height: 100px;
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -155,4 +170,7 @@ body{
 }
 .content{
     padding: 40px;
+}
+.text{
+    color: black;
 }

@@ -1,4 +1,6 @@
+{% load static %}
 <link rel="stylesheet" href="/static/cartelements.css">
+<script rel="script" src="/static/html_updates.js"></script>
 <div class="navbar">
         <div class="others">
             <img src="">
@@ -18,17 +20,36 @@
         </div>
         <div class="login_panel">
             {% if request.user.is_authenticated %}
-                {{ user_name }}
+                <p id="username">Hi {{ user_name }}</p>
                 <a href="{% url 'log_out'%}">
-                    <button class="logout">LogOut</button>
+                    <button class="logout">Logout</button>
                 </a>
                 {% else %}
                 <a href="{% url 'login'%}">
                     <button class="login">Zaloguj sie</button>
                 </a>
-            {% endif %}
-            <a href="{% url 'registration' %}">
-                <button class="register">Registration</button>
-            </a>
+                <div class="register-icon">
+                    <a href="{% url 'registration' %}">
+                        <button class="register">Registration</button>
+                    </a>
+                </div>
+                {% endif %}
+
         </div>
     </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+  register_view();
+});
+        function register_view(){
+            var register = document.getElementsByClassName('register-icon');
+            var session_satus = "{{ request.session.status }}"
+            console.log(session_satus);
+            console.log(register);
+            if (session_satus){
+                register[0].style.visibility = "hidden";
+            }
+            console.log("esa");
+        }
+</script>
