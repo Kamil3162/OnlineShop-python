@@ -2,10 +2,27 @@
 /* font-family=Kanit;*/
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200&family=Montserrat:wght@200&family=Mulish:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dosis&display=swap');
 
 #complain{
     margin-left: 20%;
     display: block;
+}
+
+#complain {
+    display: grid;
+    grid-template-columns: 1.5fr 3fr;
+}
+.complaint-form form{
+    text-align: center;
+}
+.complaint{
+    height: 30%;
+    color: black;
+}
+.complaint h1{
+    color: #5069ff;
+    text-align: left;
 }
 
 #complain label{
@@ -13,18 +30,20 @@
     font-family: 'Mulish', sans-serif;
     font-size: 17px;
     width: 30px;
+    color: black;
+    margin-left: 60px;
 }
 
 #complain input{
-    background-color: wheat;
     font-family:'Kanit', sans-serif;
     color: black;
     height: 20px;
-    width: 50%;
+    width: 60%;
     border-radius: 15px;
     border:2px solid black;
     padding: 10px;
-
+    margin-bottom: 10px;
+    margin-left: 60px;
 }
 form{
     height: 100%;
@@ -36,11 +55,19 @@ textarea{
 }
 select{
     font-size: 20px;
-    font-family: "Roboto", "Lucida Grande", Verdana, Arial, sans-serif;
+    font-family: 'Krub', sans-serif;
+    background-color: #5d9661;
+    margin-top: 10px;
     border-radius: 10px;
     font-weight: 600;
+    height: 40px;
+    margin-left: 60px;
 }
-
+textarea{
+    border-radius: 20px;
+    margin-left: 60px;
+    width: 62%;
+}
 #complain button{
     margin-left: 30%;
     font-family: 'Mulish', sans-serif;

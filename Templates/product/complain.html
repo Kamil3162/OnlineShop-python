@@ -2,12 +2,29 @@
 {% block complain %}
     <link rel="stylesheet" href="/static/complain.css">
     <div id="complain">
-        <form action="{% url 'product_complain' %}" method="post">
-            {% csrf_token %}
-            {{ complain.as_p }}
-            <button type="submit">
-                Report
-            </button>
-        </form>
+        <div class="complaint">
+            <h1>Complaint</h1>
+            <h3>Use this form and this link to report your complain.</h3>
+            <p>You have to fill all fields in following form. Care about proper informations to speed up
+            complain process. Fill fields using names on my website and numbers to following products also
+            remember about description of your problem to faster resolve your application. This way we
+            trying to improve ours service and theirs quality. Thanks </p>
+        </div>
+        <div class="complain-form">
+
+            <form action="{% url 'product_complain' %}" method="post">
+                {% csrf_token %}
+                {% for field in complain %}
+                    <label>{{ field.name.title }}</label>
+                    <br>
+                {{ field }}
+                    <br>
+                {% endfor %}
+                <button type="submit">
+                    Report
+                </button>
+            </form>
+        </div>
+
     </div>
 {% endblock %}

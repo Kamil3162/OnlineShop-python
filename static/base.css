@@ -95,7 +95,7 @@ h1{
 /* footer part - manage*/
 
 .footer{
-    height: 100px;
+    height: 50px;
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;

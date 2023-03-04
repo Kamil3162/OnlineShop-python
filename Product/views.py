@@ -1,3 +1,4 @@
+import math
 from typing import List
 
 from django.core.exceptions import ObjectDoesNotExist
@@ -48,7 +49,7 @@ def all_products(request):
         for product in prod:
             result = generate_average_rate(product)
             key = str(product.name)
-            generated_marks[key] = result
+            generated_marks[key] = round(result,1)
         return generated_marks
 
     opinions = ""       #[generate_opinions(x) for x in prod]
@@ -374,6 +375,7 @@ class ReplyComplains(View):
                                                    order=order,
                                                    subject=subject,
                                                    description=description)
+                complain.save()
                 print("Now we create a complain")
                 return redirect('information')
         print("This is validation of form - not working  ")
