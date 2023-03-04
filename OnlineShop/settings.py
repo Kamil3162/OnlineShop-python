@@ -69,7 +69,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'MainPart.views.access_categories'
+                'MainPart.views.access_categories',
+                'MainPart.context_procesors.user_context.user_context_name',
             ],
             'libraries': {
                 'dictionary_value': 'Product.templatetags.simple_tags',

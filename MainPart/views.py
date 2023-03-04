@@ -72,6 +72,7 @@ class LoginView(View):
                     login(request, user_auth)
                     request.session['username'] = login_1
                     request.session['count_prod'] = 0
+                    request.session['name'] = CustomUser.objects.all().get(email=login_1).first_name
                     request.session.set_expiry(None)
                     print("data exists")
                     return redirect("information")

@@ -26,15 +26,14 @@ h1{
     width: 100%;
     left: 0;
     top: 0;
-
-
 }
+
 .others{
     margin-left: 30%;
 }
 .navbar button{
     font-family: 'Rubik', sans-serif;
-
+    margin-top: 15px;
     font-size: 18px;
     padding: 10px;
     font-weight: 600;
@@ -53,11 +52,11 @@ h1{
     color: white;
 }
 .login_panel{
-    text-align: right;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
 }
+.login_panel
 /* part of main content*/
 .components{
     display: grid;
@@ -69,7 +68,7 @@ h1{
     font-family: 'Roboto Mono', monospace;
     color: cornsilk;
     display: grid;
-    position: fixed;
+    position: absolute;
     margin-top: 140px;
 }
 /* part of cart*/
