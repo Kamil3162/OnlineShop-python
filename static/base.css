@@ -15,7 +15,7 @@ font-family: 'Roboto Mono', monospace;
 /*
     font-family: 'Dosis', sans-serif;
 */
-h1{
+.text h1{
     color: red;
     text-align: center;
 }
@@ -105,6 +105,7 @@ h1{
     bottom: 0;
     position: fixed;
     left: 0;
+    margin-top: 60px;
 }
 
 /* body part */
@@ -117,51 +118,7 @@ body{
 
 }
 
-/* category panel  */
-.category_panel{
-    clear:both;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    text-align: center;
-    display: block;
-    border-right: 2px solid black;
-    visibility: hidden;
 
-}
-.category_panel button{
-    text-decoration: none;
-    text-align: center;
-    padding: 25px;
-    font-weight: 1000;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 20px;
-    width: 160px;
-    background-color: inherit;
-    border: none;
-}
-.category_panel button:hover{
-    background-color: white;
-    width: 100%;
-    color: black;
-}
-
-.category_panel a{
-    text-decoration: none;
-}
-.dropdown_content{
-    display: none;
-}
-.dropdown:hover .dropdown_content{
-    display: block;
-    background-color: rgba(0,0,0,0.1);
-    color:black;
-}
-.dropdown:hover .dropdown_content a{
-    color:black;
-}
-.dropdown:hover {
-    background-color: rgba(0,0,0,0.3);
-}
 /* content options*/
 
 .all_products{

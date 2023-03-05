@@ -82,7 +82,8 @@ class Product_details(View):
         else:
             context = {
                 'product': product,
-                'opinions':opinions
+                'opinion_form': RateForm(),
+                'opinions': opinions
             }
             return render(request, 'product/certain_product.html', context)
 
@@ -336,6 +337,8 @@ def category_products(request, nazwa):
     products = Product.objects.filter(category=category)
     context = {
         'products': products,
+        'opinion_form': RateForm()
+
     }
     return render(request, 'Category.html', context)
 

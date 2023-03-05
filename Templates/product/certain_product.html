@@ -2,17 +2,32 @@
 {% load static %}
 <script src="{% static 'html_updates.js' %}"></script>
 {% block product_detail %}
+<link rel="stylesheet" href="/static/product_view.css">
 
-    {{ product.producer }}
-    <form action="{% url 'add_cart' %}" method="POST">
-    {% csrf_token%}
-    <input hidden type="text" value="{{ product.id }}" name="product_id">
-    <input type="number" id="product-count" name="product-count">
-        <button type="submit">
-            Add to bucket
-        </button>
-    </form>
-    <button onclick="rate_from_active()">Add a opinion</button>
+    <div class="product-view">
+        <div class="product-details">
+            <h1>{{ product.name }}</h1>
+            <img src="{{ product.image.url }}" style="max-height: 200px">
+        </div>
+        <div class="product-options">
+              <p>Cena {{ product.price }}zł</p>
+              <form action="{% url 'add_cart' %}" method="POST">
+                {% csrf_token%}
+                <input hidden type="text" value="{{ product.id }}" name="product_id">
+                <input type="number" id="product-count" name="product-count">
+                <button type="submit">
+                    Add
+                </button>
+            </form>
+            <p>State {{ product.available }}</p>
+            <p>Producer {{ product.producer }}</p>
+        </div>
+    </div>
+    <div id="description">
+        <h3>{{ product.description }}</h3>
+    </div>
+
+    <!-- <button onclick="rate_from_active()">Add a opinion</button> -->
     <div class="opinion_form">
         <form method="post">
             {% csrf_token %}
@@ -20,13 +35,35 @@
             <button type="submit">Upload comment</button>
         </form>
     </div>
+        <br>
+
     <div class="item-opinions">
-        Opinions all
-    <br>
         {% for opinion in opinions %}
-            {{ opinion.description }}
-            {{ opinion.user }}
-            <br>
+            <div class="comment">
+                <div class="user-photo">
+                    <img src="{% static 'icons/user_photo.jpg' %}" style="">
+                    {{ opinion.user }}
+                </div>
+                <div class="user-opinion">
+                    {{ opinion.description }}
+                </div>
+            </div>
+
         {% endfor %}
     </div>
 {% endblock %}
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+  opinions_options();
+});
+        function opinions_options(){
+            var register = document.getElementsByClassName('opinion_form');
+            var session_satus = "{{ request.session.status }}"
+            console.log(session_satus);
+            console.log(register);
+            if (!session_satus){
+                console.log("esa");
+                register[0].style.visibility = "hidden";
+            }
+        }
+</script>

@@ -2,8 +2,17 @@
 /*    font-family: 'Roboto Mono', monospace;
       font-family: 'Montserrat', sans-serif;
  */
-
-
+@import url('https://fonts.googleapis.com/css2?family=Cambay&display=swap');
+/*font-family: 'Cambay', sans-serif;
+ */
+@import url('https://fonts.googleapis.com/css2?family=Cambay&family=Jaldi&display=swap');
+/*
+    font-family: 'Jaldi', sans-serif;
+ */
+@import url('https://fonts.googleapis.com/css2?family=Jaldi&display=swap');
+/*
+    font-family: 'Jaldi', sans-serif;
+ */
 .all-products{
     color: cornsilk;
     font-family: 'Roboto Mono', monospace;
@@ -12,36 +21,43 @@
     grid-template-rows:350px;
     grid-auto-rows: auto;
     grid-gap: 20px;
+    margin-left: 30px;
 }
 
 .product_control{
     display: block;
     text-align: center;
-    background-color: #c4c2c2;
+    background-color: #e3e3e3;
     border-radius: 10px;
+    border: 1px solid #b1aeae;
 }
 .product_control img{
 
 }
 .name{
-    color: black;
     font-weight: 600;
-    font-size: 18px;
+    font-size: 25px;
+    font-family: 'Jaldi', sans-serif;
+    color: #211e1e;
 }
 .photo{
-    height: 60%;
+    height: 50%;
 }
 .photo img{
     height: 80%;
 }
-button{
-    font-size: 17px;
-    font-weight: 600;
+.product_control button{
+    font-size: 15px;
+    font-family: 'Cambay', sans-serif;
+    font-weight: 800;
     border-radius: 10px;
-    background-color: black;
+    background-color: white;
+    width: 100px;
+    height: 40px;
 }
-button:hover{
-    background-color: red;
+.product_control button:hover{
+    border: 4px solid green;
+
 }
 /*
 .photo{
@@ -55,10 +71,15 @@ button:hover{
 }*/
 button a{
     text-decoration: none;
+    color: black;
+    margin-top:10px;
 }
 .average_mark{
     color: black;
-    font-weight: 600;
+    font-weight: 400;
+    font-size: 13px;
+
+    font-family: 'Jaldi', sans-serif;
 
 }
 .price{
@@ -69,4 +90,62 @@ button a{
 .discount_product{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+}
+.products-display{
+    display: grid;
+    grid-template-columns: 2fr 8fr;
+}
+
+/* category panel  */
+.category_panel{
+    clear:both;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    display: block;
+    border-right: 2px solid black;
+
+}
+.category_panel button{
+    text-decoration: none;
+    text-align: center;
+    padding: 25px;
+    font-weight: 1000;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    width: 160px;
+    background-color: inherit;
+    border: none;
+}
+.category_panel button:hover{
+    background-color: white;
+    width: 100%;
+    color: black;
+}
+
+.category_panel a{
+    text-decoration: none;
+}
+.dropdown_content{
+    display: none;
+}
+.dropdown:hover .dropdown_content{
+    display: block;
+    background-color: rgba(0,0,0,0.1);
+    color:black;
+}
+.dropdown:hover .dropdown_content a{
+    color:black;
+}
+.dropdown:hover {
+    background-color: rgba(0,0,0,0.3);
+}
+/* view rate panel*/
+.view-rate-panel{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.view-rate-panel p{
+    color: black;
 }
