@@ -17,15 +17,15 @@
     margin: 5% auto;
     height: 70%;
     width: 70%;
-    background-color: black;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    /*display: grid;
+    grid-template-columns: 1fr 1fr;*/
+    display: block;
 }
 .login-part{
     background-color: white;
 }
 .login-view-part{
-    background-color: #131010;
+    background-color: #ffffff;
     display: inline-block;
 }
 
@@ -38,7 +38,7 @@
     margin-bottom: 30px;
     padding: 15px;
     border-radius: 20px;
-    background-color: #bf9281;
+    background-color: coral;
     width: 120px;
 }
 
@@ -63,12 +63,13 @@ body{
     background-color:rgb(188,190,191);
 }
 .form-login-part{
-    background-color: #ce8e77;
+    background-color: coral;
     height: 40%;
     border-radius: 20px;
     margin-left: 20px;
     width: 70%;
     padding: 40px;
+    margin-bottom: 30px;
 }
 form{
     margin-top: 30px;
@@ -90,6 +91,8 @@ input{
     border-right: none;
     border-bottom: 1px solid black;
     background-color: inherit;
+    color: #240a0a;
+    font-weight: 600;
 }
 #circle{
     background-color: coral;
@@ -101,10 +104,9 @@ input{
     display: flex;
 }
 .circle img{
-    background-color: black;
 }
 .btnlog{
-    background-color: #bb5f41;
+    background-color: #5069ff;
     font-size: 20px;
     text-align: center;
     margin-left: 25%;
@@ -113,12 +115,13 @@ input{
     height: 40px;
     width: 120px;
     font-family: 'Work Sans', sans-serif;
-    font-weight: 800;
-    color: black;
+    font-weight: 1000;
+    color: white;
     border: none;
 }
 .btnlog:hover{
     background-color: #5069ff;
+    border: 2px solid black;
     color: white;
 }
 

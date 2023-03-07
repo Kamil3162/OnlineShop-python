@@ -34,7 +34,7 @@
     border-radius: 15px;
     margin-right: 130px;
     text-align: center;
-    background-color: #b1b14b;
+    background-color:inherit;
     padding: 30px;
     margin-left: 60px;
 }
@@ -71,10 +71,7 @@
 }
 /* description*/
 #description{
-    margin-bottom: 30px;
-    color: black;
-    margin-left: 20%;
-    font-size: 13px;
+
 }
 /* item-opinions*/
 .item-opinions{
