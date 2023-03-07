@@ -14,7 +14,9 @@ font-family: 'Roboto Mono', monospace;
 */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Roboto+Mono:ital,wght@0,300;0,500;1,200&display=swap');
 
-
+@import url('https://fonts.googleapis.com/css2?family=Dongle:wght@300&display=swap');
+/*font-family: 'Dongle', sans-serif;
+ */
 .cart-elements{
     padding: 40px;
     display: block;
@@ -81,7 +83,6 @@ input[name=element-quantity]{
 }
 .item_info img{
     max-width: 170px;
-    max-height: 200px;
 }
 #delete a{
     color: white;
@@ -92,4 +93,28 @@ input[name=element-quantity]{
 .item_info button a{
     text-decoration: none;
 }
+/* finilize panel */
+.content{
 
+}
+.delivery-form p input{
+
+}
+
+#form input{
+    border-radius: 20px;
+    padding: 10px;
+}
+.content #apply-btn{
+    font-size: 30px;
+    width: 100px;
+    padding: 10px;
+    border-radius: 20px;
+    background-color: green;
+    font-weight: 600;
+    font-family: 'Dongle', sans-serif;;
+}
+
+#apply-btn:hover{
+    color: white;
+}

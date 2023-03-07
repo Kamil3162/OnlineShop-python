@@ -4,6 +4,7 @@
 {% block final_order %}
     <script src="{% static 'html_updates.js' %}"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="/static/finalize.css"></script>
     {% for order in items %}
         {{ order.product.name }} {{ order.product.price }} {{ order.quantity }}
     {% endfor %}
@@ -27,7 +28,7 @@
                 {{ card_form.as_p }}
             </div>
         </div>
-        <button type="submit">Apply</button>
+        <button type="submit" id="apply-btn">Apply</button>
     </form>
     <h2></h2>
 {% endblock %}

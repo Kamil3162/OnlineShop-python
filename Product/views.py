@@ -40,16 +40,20 @@ def all_products(request):
     def generate_average_rate(product: Product):
         average_mark = 0
         rates = Rate.objects.filter(product=product)
-        for rate in rates:
-            average_mark += rate.rate
-        return average_mark/len(rates)
+        print(len(rates), 'to jest ta liczba')
+        if rates.__len__() == 0:
+            return 0
+        else:
+            for rate in rates:
+                average_mark += rate.rate
+            return average_mark/len(rates)
 
     def generate_all_marks():
         generated_marks = {}
         for product in prod:
             result = generate_average_rate(product)
             key = str(product.name)
-            generated_marks[key] = round(result,1)
+            generated_marks[key] = round(result, 1)
         return generated_marks
 
     opinions = ""       #[generate_opinions(x) for x in prod]
@@ -63,7 +67,9 @@ def all_products(request):
                                                          'opinion': marks,
                                                          'opinions': opinions})
 class Product_details(View):
+
     def get(self, request, id):
+        from django.core.paginator import Paginator
         """
         This part is used to display a particular product with
         all details and generate all comments to following product
@@ -72,6 +78,7 @@ class Product_details(View):
         """
         product = Product.objects.all().get(id=id)
         opinions = Rate.objects.filter(product=product)
+
         if request.user.is_authenticated:
             context = {
                 'product': product,
@@ -88,6 +95,7 @@ class Product_details(View):
             return render(request, 'product/certain_product.html', context)
 
     def post(self, request, id):
+
         """
         This part is responsible for add a rate to particular product,
         First we have to get object product and user to get comment to
@@ -99,6 +107,7 @@ class Product_details(View):
         if request.user.is_authenticated:
             product = Product.objects.get(id=id)
             user = CustomUser.objects.get(email=request.session.get('username'))
+
             rate_existance = Rate.objects.filter(user=user, product=product).__len__()
             if rate_existance:
                 request.session['rate_active'] = False

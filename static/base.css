@@ -84,7 +84,7 @@ font-family: 'Roboto Mono', monospace;
     color: cornsilk;
     display: grid;
     position: absolute;
-    margin-top: 140px;
+    margin-top: 70px;
 }
 /* part of cart*/
 .cart-remove{
@@ -127,6 +127,8 @@ body{
 }
 .content{
     padding: 40px;
+    margin-left: 100px;
+    color: black;
 }
 .text{
     color: black;

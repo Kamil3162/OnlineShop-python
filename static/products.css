@@ -106,17 +106,23 @@ button a{
     border-right: 2px solid black;
 
 }
+.category_panel p{
+    color: black;
+    font-size: 25px;
+    margin-bottom: 0;
+}
 .category_panel button{
     text-decoration: none;
     text-align: center;
     padding: 25px;
     font-weight: 1000;
     font-family: 'Montserrat', sans-serif;
-    font-size: 20px;
+    font-size: 17px;
     width: 160px;
     background-color: inherit;
     border: none;
 }
+
 .category_panel button:hover{
     background-color: white;
     width: 100%;
@@ -127,19 +133,21 @@ button a{
     text-decoration: none;
 }
 .dropdown_content{
-    display: none;
-}
-.dropdown:hover .dropdown_content{
     display: block;
-    background-color: rgba(0,0,0,0.1);
+}
+.dropdown_content:hover{
+    display: block;
+    color:black;
+    width: 100%;
+}
+.dropdown_content button:hover{
+    border-radius: 20px;
+    background-color: coral;
+}
+.dropdown_content a{
     color:black;
 }
-.dropdown:hover .dropdown_content a{
-    color:black;
-}
-.dropdown:hover {
-    background-color: rgba(0,0,0,0.3);
-}
+
 /* view rate panel*/
 .view-rate-panel{
     display: flex;

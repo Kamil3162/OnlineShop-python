@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
@@ -25,7 +26,6 @@ def create_user(request):
         print("register")
     register_form = forms.RegisterForm()
     return render(request, 'Register.html', {'register':register_form})
-
 
 def login_auth(request):
     if request.method == "POST":

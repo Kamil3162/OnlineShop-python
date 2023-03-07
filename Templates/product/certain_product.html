@@ -6,10 +6,10 @@
 
     <div class="product-view">
         <div class="product-details">
-            <h1>{{ product.name }}</h1>
-            <img src="{{ product.image.url }}" style="max-height: 200px">
+            <img src="{{ product.image.url }}">
         </div>
         <div class="product-options">
+            <h2>{{ product.name }}</h2>
               <p>Cena {{ product.price }}zł</p>
               <form action="{% url 'add_cart' %}" method="POST">
                 {% csrf_token%}
@@ -48,22 +48,12 @@
                     {{ opinion.description }}
                 </div>
             </div>
-
         {% endfor %}
     </div>
+    <button onclick="click()"></button>
 {% endblock %}
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-  opinions_options();
-});
-        function opinions_options(){
-            var register = document.getElementsByClassName('opinion_form');
-            var session_satus = "{{ request.session.status }}"
-            console.log(session_satus);
-            console.log(register);
-            if (!session_satus){
-                console.log("esa");
-                register[0].style.visibility = "hidden";
-            }
-        }
+    function click(){
+        console.log("Hello world");
+    }
 </script>

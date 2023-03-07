@@ -45,11 +45,9 @@
         function register_view(){
             var register = document.getElementsByClassName('register-icon');
             var session_satus = "{{ request.session.status }}"
-            console.log(session_satus);
-            console.log(register);
             if (session_satus){
                 register[0].style.visibility = "hidden";
             }
-            console.log("esa");
+            console.log("Navbar");
         }
 </script>
