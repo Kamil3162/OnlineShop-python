@@ -134,7 +134,7 @@ font-family: 'Roboto Mono', monospace;
 #copy-rights{
     font-family: 'Rubik', sans-serif;
     font-size: 15px;
-    margin-left: -80px;
+    margin-left: -200px;
 }
 .footer .contact{
     margin-top: 20px;
@@ -166,10 +166,28 @@ body{
     grid-template-columns: 1fr 1fr;
 }
 .content{
-    padding: 40px;
     margin-left: 100px;
     color: black;
+
+
 }
 .text{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     color: black;
+    height: 100%;
+}
+.home-photos #main{
+    max-width: 80%;
+    margin-left: 40px;
+}
+.lower-photos{
+    display: flex;
+    flex-direction: row;
+}
+.lower-photos img{
+    margin-top: -120px;
+    height: 260px;
+    display: flex;
+    border-radius: 15px;
 }
