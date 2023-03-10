@@ -9,6 +9,19 @@
 /*
     font-family: 'Sulphur Point', sans-serif;
  */
+@import url('https://fonts.googleapis.com/css2?family=Sulphur+Point:wght@300&display=swap');
+/*
+font-family: 'Sulphur Point', sans-serif;
+ */
+@import url('https://fonts.googleapis.com/css2?family=Sulphur+Point:wght@300&display=swap');
+/*
+font-family: 'Sulphur Point', sans-serif;
+ */
+@import url('https://fonts.googleapis.com/css2?family=Alatsi&display=swap');
+/*
+font-family: 'Alatsi', sans-serif;
+
+ */
 /* product view*/
 .product-view{
     color: black;
@@ -41,12 +54,39 @@
     padding: 30px;
     margin-left: 60px;
 }
+.product-options h2{
+    font-family: 'Sulphur Point', sans-serif;
+    font-size: 30px;
+    margin: 0px;
+}
 .product-options p{
     text-align: left;
     font-size: 15px;
     background-color: white;
     font-family: 'Sulphur Point', sans-serif;
     font-weight: 600;
+}
+#specification {
+    font-size: 35px;
+    font-family: 'Sulphur Point', sans-serif;
+    margin: 10px 0px;
+}
+#state{
+    background-color: #bc6c52;
+    padding: 10px;
+    border-radius: 20px;
+    width: 200px;
+    font-size: 15px;
+}
+#producent{
+    background-color: #bc6c52;
+    padding: 10px;
+    border-radius: 20px;
+    width: 200px;
+    font-size: 15px;
+}
+#product-name{
+    font-size: 45px;
 }
 .product-options button{
     text-align: center;
@@ -78,9 +118,10 @@
 #product-category{
     background-color: orange;
     padding: 10px;
-    font-size: 20px;
-    width: 150px;
+    font-size: 13px;
+    width: 100px;
     font-weight: 1000;
+    font-family: 'Alatsi', sans-serif;
 }
 /* item-opinions*/
 .item-opinions{

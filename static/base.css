@@ -101,7 +101,6 @@ font-family: 'Roboto Mono', monospace;
     grid-template-columns: 2fr 8fr;
 }
 .main-content{
-    height: 600px;
     width: 100%;
     font-family: 'Roboto Mono', monospace;
     color: cornsilk;

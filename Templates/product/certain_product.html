@@ -7,13 +7,14 @@
     <div class="product-view">
         <div class="product-details">
             <img src="{{ product.image.url }}">
-        </div>
-        <div class="product-options">
-            <p id="product-category">{{ product.category }}</p>
-            <h2>{{ product.name }}</h2>
             <div id="description">
                 <p>{{ product.description }}</p>
             </div>
+        </div>
+        <div class="product-options">
+            <p id="product-category">{{ product.category }}</p>
+            <h2 id="product-name">{{ product.name }}</h2>
+
             <p>Cena {{ product.price }}zł</p>
               <form action="{% url 'add_cart' %}" method="POST">
                 {% csrf_token%}
@@ -24,9 +25,9 @@
                     Add
                 </button>
             </form>
-            <h4>Specification</h4>
-            <p>State {{ product.available }}</p>
-            <p>Producer {{ product.producer }}</p>
+            <h4 id="specification">Specification</h4>
+            <p id="state">State - {{ product.available }}</p>
+            <p id="producent">Producer - {{ product.producer }}</p>
         </div>
     </div>
 
