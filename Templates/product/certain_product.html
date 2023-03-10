@@ -14,15 +14,17 @@
             <div id="description">
                 <p>{{ product.description }}</p>
             </div>
+            <p>Cena {{ product.price }}zł</p>
               <form action="{% url 'add_cart' %}" method="POST">
                 {% csrf_token%}
                 <input hidden type="text" value="{{ product.id }}" name="product_id">
-                <p>Cena {{ product.price }}zł</p>
                 <input type="number" id="product-count" name="product-count">
+
                 <button type="submit">
                     Add
                 </button>
             </form>
+            <h4>Specification</h4>
             <p>State {{ product.available }}</p>
             <p>Producer {{ product.producer }}</p>
         </div>

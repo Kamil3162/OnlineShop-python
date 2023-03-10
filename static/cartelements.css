@@ -55,7 +55,6 @@ font-family: 'Roboto Mono', monospace;
 .item_info{
     display: inline-block;
     background-color: white;
-    border: 3px solid black;
     margin-bottom: 20px;
     border-radius: 15px;
 }
@@ -82,7 +81,8 @@ input[name=element-quantity]{
 
 }
 .item_info img{
-    max-width: 170px;
+    max-width: 80px;
+    border-radius: 20px;
 }
 #delete a{
     color: white;

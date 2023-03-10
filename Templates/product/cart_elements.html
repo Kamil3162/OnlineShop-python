@@ -9,15 +9,16 @@
         {% else %}
             {% for element in items %}
                 <div class="item_info">
-                    <label id="price">
-                    {{ element.product.price }}
-                    </label>
                     <img src="{{ element.product.image.url }}">
+                    <label id="price">
+                        Price :{{ element.product.price }}
+                    </label>
                     <button class="cart-add" onclick="quantity_modifier_add()" name="add">
                         <a href="{% url 'adding_cart' element.product.id %}">
                             <img src="/static/icons/add.png" style="height: 50px">
                         </a>
                     </button>
+
                     <button class="cart-minus" onclick="quantity_modifier_minus()" name="minus">
                         <a href="{% url 'minus_cart' element.product.id %}">
                             <img src="/static/icons/minus.png" style="height: 60px">

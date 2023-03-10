@@ -5,7 +5,10 @@
     font-family: 'Anaheim', sans-serif;
 
 */
-
+@import url('https://fonts.googleapis.com/css2?family=Almarai&family=Sulphur+Point:wght@300&display=swap');
+/*
+    font-family: 'Sulphur Point', sans-serif;
+ */
 /* product view*/
 .product-view{
     color: black;
@@ -33,22 +36,21 @@
 .product-options{
     border-radius: 15px;
     margin-right: 130px;
-    text-align: center;
-    background-color:inherit;
+    text-align: left;
+    background-color:white;
     padding: 30px;
     margin-left: 60px;
 }
 .product-options p{
-    text-align: center;
+    text-align: left;
     font-size: 15px;
     background-color: white;
-    border-radius: 15px;
-    width: 100px;
-    margin-left: 150px;
+    font-family: 'Sulphur Point', sans-serif;
+    font-weight: 600;
 }
 .product-options button{
     text-align: center;
-    margin-left: 30%;
+    margin-left: 20%;
     font-family: 'Mulish', sans-serif;
     font-weight: 600;
     font-size: 18px;
@@ -65,13 +67,20 @@
 }
 .product-options form{
     display: flex;
-    flex-direction:column ;
+    flex-direction:row;
     text-align: center;
     font-size: 13px;
 }
 /* description*/
 #description{
 
+}
+#product-category{
+    background-color: orange;
+    padding: 10px;
+    font-size: 20px;
+    width: 150px;
+    font-weight: 1000;
 }
 /* item-opinions*/
 .item-opinions{
@@ -101,4 +110,8 @@
     color: black;
     font-family: 'Anaheim', sans-serif;
 
+}
+#product-count{
+    height: 30px;
+    margin-top: 20px;
 }

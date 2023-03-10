@@ -5,7 +5,8 @@ from django.contrib.auth import login, logout, authenticate
 from django.views.generic import View
 from MainPart import forms
 from .models import CustomUser
-from Product.models import Category
+from Product.models import (Category,
+                            Producer)
 # Create your views here.
 
 
@@ -14,7 +15,12 @@ def first_information(request):
 
 def access_categories(request):
     category = Category.objects.all()
-    return {'categories': category}
+    producents = Producer.objects.all()
+    context = {
+        'categories': category,
+        'producents': producents
+    }
+    return context
 
 
 def indexpage(request):

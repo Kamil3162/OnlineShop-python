@@ -3,12 +3,35 @@
 <p class="dropbtn">Kategorie:</p>
 <br>
     <div class="dropdown_content">
-        {% for category in categories %}
-            <button>
-                <a href="{% url 'product_category' category %}">{{ category }}</a>
-            </button>
-        <br>
-        {% endfor %}
+        <form action="{% url 'all_products' %}" method="post">
+            <div class="categories">
+            {% for category in categories %}
+                <input type="checkbox" value="{% url 'product_category' category %}">{{ category }}
+                <!-- <button>
+                    <a href="{% url 'product_category' category %}">{{ category }}</a>
+                </button> -->
+            <br>
+            {% endfor %}
+            </div>
+            <br>
+            <br>
+            <br>
+            <div class="producents">
+                Companies
+                <br>
+                {% for company in producents %}
+                    <input type="checkbox" value="" name="company">{{ company }}
+
+                <br>
+                {% endfor %}
+            </div>
+        </form>
+
     </div>
+    <button>
+        <a href="{% url 'all_products' %}">
+            Apply
+        </a>
+    </button>
 </div>
 

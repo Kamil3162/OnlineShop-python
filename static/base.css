@@ -20,9 +20,26 @@ font-family: 'Roboto Mono', monospace;
     font-family: 'Dongle', sans-serif;
 
  */
+@import url('https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap');
+/*
+    font-family: 'Didact Gothic', sans-serif;
+ */
+@import url('https://fonts.googleapis.com/css2?family=Almarai&display=swap');
+/*
+    font-family: 'Almarai', sans-serif;
+
+ */
 .text h1{
-    color: red;
+    font-family: 'Almarai', sans-serif;
+    font-weight: 1000;
+    color: #b15435;
     text-align: center;
+    font-size: 35px;
+}
+.text p{
+    font-family: 'Didact Gothic', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
 }
 /* part responsible for Base view of page */
 .navbar{
@@ -185,9 +202,46 @@ body{
     display: flex;
     flex-direction: row;
 }
-.lower-photos img{
+.lower-photos .dsa img{
     margin-top: -120px;
     height: 260px;
     display: flex;
-    border-radius: 15px;
+    border-radius: 50px 15px 30px;
+}
+.lower-photos .sa img{
+    margin-top: -10px;
+    height: 260px;
+    display: flex;
+    border-radius: 15px 50px;
+}
+.comments{
+    margin-top: 70px;
+    background-color: #a78771;
+    height: 150px;
+    display: flex;
+    flex-direction: row;
+    border-radius: 30px;
+
+}
+.comments .image-name{
+    width: 25%;
+    padding: 20px;
+}
+.comments .image-name img{
+    width: 90px;
+    height: 90px;
+    border-radius: 80px;
+}
+.comments .image-name p{
+    font-size: 14px;
+    margin: 0;
+}
+.comments .user-comment{
+    padding: 20px;
+    font-size: 17px;
+    font-family: 'Dosis', sans-serif;
+    font-weight: 600;
+}
+.complaint{
+    font-family: 'Didact Gothic', sans-serif;
 }

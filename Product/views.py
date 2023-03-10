@@ -29,6 +29,8 @@ def generate_opinions(query:Rate):
         counter += 1
     return final_opinion/counter
 
+class all_products():
+    pass
 def all_products(request):
     """
         This function is responsible for generating all product on site
