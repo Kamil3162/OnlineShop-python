@@ -1,3 +1,4 @@
+import math
 from typing import List
 
 from django.core.exceptions import ObjectDoesNotExist
@@ -28,6 +29,8 @@ def generate_opinions(query:Rate):
         counter += 1
     return final_opinion/counter
 
+class all_products():
+    pass
 def all_products(request):
     """
         This function is responsible for generating all product on site
@@ -39,16 +42,20 @@ def all_products(request):
     def generate_average_rate(product: Product):
         average_mark = 0
         rates = Rate.objects.filter(product=product)
-        for rate in rates:
-            average_mark += rate.rate
-        return average_mark/len(rates)
+        print(len(rates), 'to jest ta liczba')
+        if rates.__len__() == 0:
+            return 0
+        else:
+            for rate in rates:
+                average_mark += rate.rate
+            return average_mark/len(rates)
 
     def generate_all_marks():
         generated_marks = {}
         for product in prod:
             result = generate_average_rate(product)
             key = str(product.name)
-            generated_marks[key] = result
+            generated_marks[key] = round(result, 1)
         return generated_marks
 
     opinions = ""       #[generate_opinions(x) for x in prod]
@@ -62,7 +69,9 @@ def all_products(request):
                                                          'opinion': marks,
                                                          'opinions': opinions})
 class Product_details(View):
+
     def get(self, request, id):
+        from django.core.paginator import Paginator
         """
         This part is used to display a particular product with
         all details and generate all comments to following product
@@ -71,6 +80,7 @@ class Product_details(View):
         """
         product = Product.objects.all().get(id=id)
         opinions = Rate.objects.filter(product=product)
+
         if request.user.is_authenticated:
             context = {
                 'product': product,
@@ -81,11 +91,13 @@ class Product_details(View):
         else:
             context = {
                 'product': product,
-                'opinions':opinions
+                'opinion_form': RateForm(),
+                'opinions': opinions
             }
             return render(request, 'product/certain_product.html', context)
 
     def post(self, request, id):
+
         """
         This part is responsible for add a rate to particular product,
         First we have to get object product and user to get comment to
@@ -97,6 +109,7 @@ class Product_details(View):
         if request.user.is_authenticated:
             product = Product.objects.get(id=id)
             user = CustomUser.objects.get(email=request.session.get('username'))
+
             rate_existance = Rate.objects.filter(user=user, product=product).__len__()
             if rate_existance:
                 request.session['rate_active'] = False
@@ -335,6 +348,8 @@ def category_products(request, nazwa):
     products = Product.objects.filter(category=category)
     context = {
         'products': products,
+        'opinion_form': RateForm()
+
     }
     return render(request, 'Category.html', context)
 
@@ -374,6 +389,7 @@ class ReplyComplains(View):
                                                    order=order,
                                                    subject=subject,
                                                    description=description)
+                complain.save()
                 print("Now we create a complain")
                 return redirect('information')
         print("This is validation of form - not working  ")

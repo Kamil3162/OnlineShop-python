@@ -2,34 +2,46 @@
 {% load static %}
 {% block cart_elements %}
 <link rel="stylesheet" href="/static/cartelements.css">
+
     <div class="cart-elements">
+        <h2>Shopping cart</h2>
+        <div class="naglowek">
+            Product
+            Price
+            Quantity
+        </div>
         <div class="cart-products">
             {% if information %}
             {{ information }}
         {% else %}
             {% for element in items %}
                 <div class="item_info">
-                    <label id="price">
-                    {{ element.product.price }}
+                    <img src="{{ element.product.image.url }}">
+                    <label id="name" style="color:black">
+                        {{ element.product.name }}
                     </label>
-                    <button class="cart-add" onclick="quantity_modifier_add()" name="add">
-                        <a href="{% url 'adding_cart' element.product.id %}">
-                            <img src="/static/icons/add.png" style="height: 50px">
-                        </a>
-                    </button>
-                    <button class="cart-minus" onclick="quantity_modifier_minus()" name="minus">
-                        <a href="{% url 'minus_cart' element.product.id %}">
-                            <img src="/static/icons/minus.png" style="height: 60px">
-                        </a>
-                    </button>
+                    <label id="price">
+                        {{ element.product.price }}zł
+                    </label>
+                    <div class="quantity-component" style="display: flex">
+                        <button class="cart-add" onclick="quantity_modifier_add()" name="add">
+                            <a href="{% url 'adding_cart' element.product.id %}">
+                                +
+                            </a>
+                        </button>
+                        <input type="text" value="{{ element.quantity }}" name="element-quantity">
+                        <button class="cart-minus" onclick="quantity_modifier_minus()" name="minus">
+                            <a href="{% url 'minus_cart' element.product.id %}">
+                                -
+                            </a>
+                        </button>
+                    </div>
 
-                    <input type="text" value="{{ element.quantity }}" name="element-quantity">
-                    <button>
-                    <a href="{% url 'del_cart' element.product.id %}">Delete</a>
+                    <button id="delete">
+                    <a href="{% url 'del_cart' element.product.id %}">X</a>
                     </button>
                 </div>
             <br>
-        </div>
             {% endfor %}
                 <br>
             <div id="final_prize">

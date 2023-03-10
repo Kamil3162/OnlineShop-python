@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200&family=Montserrat:wght@200&family=Mulish:wght@600&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Anaheim&display=swap');
+/*
+    font-family: 'Anaheim', sans-serif;
+
+*/
+@import url('https://fonts.googleapis.com/css2?family=Almarai&family=Sulphur+Point:wght@300&display=swap');
+/*
+    font-family: 'Sulphur Point', sans-serif;
+ */
+@import url('https://fonts.googleapis.com/css2?family=Sulphur+Point:wght@300&display=swap');
+/*
+font-family: 'Sulphur Point', sans-serif;
+ */
+@import url('https://fonts.googleapis.com/css2?family=Sulphur+Point:wght@300&display=swap');
+/*
+font-family: 'Sulphur Point', sans-serif;
+ */
+@import url('https://fonts.googleapis.com/css2?family=Alatsi&display=swap');
+/*
+font-family: 'Alatsi', sans-serif;
+
+ */
+/* product view*/
+.product-view{
+    color: black;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.product-view img{
+    width: 80%;
+    height: 300px;
+    padding: 20px;
+    border-radius: 20px;
+    margin-left: 70px;
+    margin-right: 0;
+}
+/* product details*/
+
+.product-details{
+    text-align: center;
+}
+.product-details img{
+    border-radius: 20px;
+}
+/* product-options*/
+.product-options{
+    border-radius: 15px;
+    margin-right: 130px;
+    text-align: left;
+    background-color:white;
+    padding: 30px;
+    margin-left: 60px;
+}
+.product-options h2{
+    font-family: 'Sulphur Point', sans-serif;
+    font-size: 30px;
+    margin: 0px;
+}
+.product-options p{
+    text-align: left;
+    font-size: 15px;
+    background-color: white;
+    font-family: 'Sulphur Point', sans-serif;
+    font-weight: 600;
+}
+#specification {
+    font-size: 35px;
+    font-family: 'Sulphur Point', sans-serif;
+    margin: 10px 0px;
+}
+#state{
+    background-color: #bc6c52;
+    padding: 10px;
+    border-radius: 20px;
+    width: 200px;
+    font-size: 15px;
+}
+#producent{
+    background-color: #bc6c52;
+    padding: 10px;
+    border-radius: 20px;
+    width: 200px;
+    font-size: 15px;
+}
+#product-name{
+    font-size: 45px;
+}
+.product-options button{
+    text-align: center;
+    margin-left: 20%;
+    font-family: 'Mulish', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    width: 100px;
+    padding: 10px;
+    border-radius: 20px;
+    box-shadow: 5px 5px 10px 2px rgb(0 0 0);
+    margin-top: 15px;
+
+}
+.product-options button:hover{
+    background-color: green;
+    color: white;
+}
+.product-options form{
+    display: flex;
+    flex-direction:row;
+    text-align: center;
+    font-size: 13px;
+}
+/* description*/
+#description{
+
+}
+#product-category{
+    background-color: orange;
+    padding: 10px;
+    font-size: 13px;
+    width: 100px;
+    font-weight: 1000;
+    font-family: 'Alatsi', sans-serif;
+}
+/* item-opinions*/
+.item-opinions{
+    margin-bottom: 60px;
+}
+.comment{
+    display: grid;
+    grid-template-columns: 1fr 9fr;
+    margin-left: 130px;
+    margin-bottom: 30px;
+    margin-right: 130px;
+    border-bottom: 1px solid black;
+    padding: 20px;
+}
+.comment img{
+    height: 70px;
+    width: 70px;
+    border-radius: 60px;
+}
+.user-photo{
+    display: block;
+    color: black;
+}
+.user-opinion{
+    margin-top: 10px;
+    font-size: 15px;
+    color: black;
+    font-family: 'Anaheim', sans-serif;
+
+}
+#product-count{
+    height: 30px;
+    margin-top: 20px;
+}

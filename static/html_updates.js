@@ -76,7 +76,18 @@ function validation(){
         if (!Array.from(checkboxes).some(checkbox => checkbox.checked)) {
             alert('Please select at least one checkbox.');
             location.reload();
-
       }
     });
 }
+
+function comments_limiter(){
+    var comment_container = document.getElementsByName('.comment');
+    console.log("Twoj strary");
+    console.log(comment_container);
+
+}
+
+
+
+
+

@@ -1,12 +1,35 @@
 {% extends 'Base.html' %}
-
+{% load static %}
+{% load simple_tags %}
 {% block category_products %}
-    {% for product in products %}
-        {{ product }}
-        <img src="{{ product.image.url }}" width="120">
-        <button>
-            <a href="{% url 'product_view' product.pk %}">View</a>
-        </button>
-        <br>
-    {% endfor %}
+    <link rel="stylesheet" href="/static/products.css">
+    <link rel="stylesheet" href="/static/base.css">
+   <div class="products-display">
+        <div class="category_panel">
+            {% include 'product/categories.html'%}
+        </div>
+
+        <div class="all-products">
+
+            {% for item in products %}
+                <div class="product_control">
+                    <div class="name">{{ item }}</div>
+                    <div class="photo">
+                        <img src="{{ item.image.url }}" width="60%" height="70%" style="justify-items: center">
+                    </div>
+                    <div class="average_mark">
+                        {{ item.description }}
+                    </div>
+                    <div class="price">
+                        {{ item.price }}zł
+                    </div>
+                    <div class="view-rate-panel">
+                        <button data-product="{{ item.id }}">
+                            <a href="{% url 'product_view' item.id %}">View</a>
+                        </button>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}

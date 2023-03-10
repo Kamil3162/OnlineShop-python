@@ -2,17 +2,37 @@
 {% load static %}
 <script src="{% static 'html_updates.js' %}"></script>
 {% block product_detail %}
+<link rel="stylesheet" href="/static/product_view.css">
 
-    {{ product.producer }}
-    <form action="{% url 'add_cart' %}" method="POST">
-    {% csrf_token%}
-    <input hidden type="text" value="{{ product.id }}" name="product_id">
-    <input type="number" id="product-count" name="product-count">
-        <button type="submit">
-            Add to bucket
-        </button>
-    </form>
-    <button onclick="rate_from_active()">Add a opinion</button>
+    <div class="product-view">
+        <div class="product-details">
+            <img src="{{ product.image.url }}">
+            <div id="description">
+                <p>{{ product.description }}</p>
+            </div>
+        </div>
+        <div class="product-options">
+            <p id="product-category">{{ product.category }}</p>
+            <h2 id="product-name">{{ product.name }}</h2>
+
+            <p>Cena {{ product.price }}zł</p>
+              <form action="{% url 'add_cart' %}" method="POST">
+                {% csrf_token%}
+                <input hidden type="text" value="{{ product.id }}" name="product_id">
+                <input type="number" id="product-count" name="product-count">
+
+                <button type="submit">
+                    Add
+                </button>
+            </form>
+            <h4 id="specification">Specification</h4>
+            <p id="state">State - {{ product.available }}</p>
+            <p id="producent">Producer - {{ product.producer }}</p>
+        </div>
+    </div>
+
+
+    <!-- <button onclick="rate_from_active()">Add a opinion</button> -->
     <div class="opinion_form">
         <form method="post">
             {% csrf_token %}
@@ -20,13 +40,25 @@
             <button type="submit">Upload comment</button>
         </form>
     </div>
+        <br>
+
     <div class="item-opinions">
-        Opinions all
-    <br>
         {% for opinion in opinions %}
-            {{ opinion.description }}
-            {{ opinion.user }}
-            <br>
+            <div class="comment">
+                <div class="user-photo">
+                    <img src="{% static 'icons/user_photo.jpg' %}" style="">
+                    {{ opinion.user }}
+                </div>
+                <div class="user-opinion">
+                    {{ opinion.description }}
+                </div>
+            </div>
         {% endfor %}
     </div>
+    <button onclick="click()"></button>
 {% endblock %}
+<script>
+    function click(){
+        console.log("Hello world");
+    }
+</script>

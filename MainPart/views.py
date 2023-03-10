@@ -1,10 +1,12 @@
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
 from django.views.generic import View
 from MainPart import forms
 from .models import CustomUser
-from Product.models import Category
+from Product.models import (Category,
+                            Producer)
 # Create your views here.
 
 
@@ -13,7 +15,12 @@ def first_information(request):
 
 def access_categories(request):
     category = Category.objects.all()
-    return {'categories': category}
+    producents = Producer.objects.all()
+    context = {
+        'categories': category,
+        'producents': producents
+    }
+    return context
 
 
 def indexpage(request):
@@ -25,7 +32,6 @@ def create_user(request):
         print("register")
     register_form = forms.RegisterForm()
     return render(request, 'Register.html', {'register':register_form})
-
 
 def login_auth(request):
     if request.method == "POST":
@@ -72,6 +78,7 @@ class LoginView(View):
                     login(request, user_auth)
                     request.session['username'] = login_1
                     request.session['count_prod'] = 0
+                    request.session['status'] = True
                     request.session.set_expiry(None)
                     print("data exists")
                     return redirect("information")

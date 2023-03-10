@@ -7,32 +7,69 @@
 font-family: 'Montserrat', sans-serif;
 font-family: 'Roboto Mono', monospace;
 */
-h1{
-    color: red;
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Rubik:ital,wght@0,300;1,300&display=swap');
+/*
+    font-family: 'Nanum Gothic', sans-serif;
+ */
+@import url('https://fonts.googleapis.com/css2?family=Dosis&display=swap');
+/*
+    font-family: 'Dosis', sans-serif;
+*/
+@import url('https://fonts.googleapis.com/css2?family=Dongle:wght@300&display=swap');
+/*
+    font-family: 'Dongle', sans-serif;
+
+ */
+@import url('https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap');
+/*
+    font-family: 'Didact Gothic', sans-serif;
+ */
+@import url('https://fonts.googleapis.com/css2?family=Almarai&display=swap');
+/*
+    font-family: 'Almarai', sans-serif;
+
+ */
+.text h1{
+    font-family: 'Almarai', sans-serif;
+    font-weight: 1000;
+    color: #b15435;
     text-align: center;
+    font-size: 35px;
+}
+.text p{
+    font-family: 'Didact Gothic', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
 }
 /* part responsible for Base view of page */
 .navbar{
-    height: 100px;
+    height: 80px;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    padding: 15px;
+    padding: 15px 0;
+    background-color: white;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    margin-bottom: 30px;
 }
+
 .others{
     margin-left: 30%;
 }
 .navbar button{
-    font-family: 'Roboto Mono', monospace;
+    font-family: 'Rubik', sans-serif;
+    margin-top: 15px;
     font-size: 18px;
     padding: 10px;
-    font-weight: 800;
+    font-weight: 600;
     background-color: inherit;
     border:none;
-    color: white;
-
+    color: black;
 }
 .navbar button:hover{
-    background-color: white;
+    background-color: orange;
     color: black;
     border-radius: 15px;
 }
@@ -42,7 +79,21 @@ h1{
     color: white;
 }
 .login_panel{
-    text-align: right;
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    margin-right: 60px;
+}
+.login_panel p{
+    font-size: 23px;
+}
+#username{
+    margin-top: 15px;
+    padding: 10px;
+    font-size: 18px;
+    color: #1fa0a6;
+    font-weight: 600;
+    font-family: 'Dosis', sans-serif;
 }
 /* part of main content*/
 .components{
@@ -50,10 +101,12 @@ h1{
     grid-template-columns: 2fr 8fr;
 }
 .main-content{
-    height: 600px;
+    width: 100%;
     font-family: 'Roboto Mono', monospace;
     color: cornsilk;
     display: grid;
+    position: sticky;
+    margin-top: 120px;
 }
 /* part of cart*/
 .cart-remove{
@@ -64,64 +117,64 @@ h1{
 /* footer part - manage*/
 
 .footer{
-    height: 300px;
+    height: 150px;
+    width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     text-align: center;
+    background-color: white;
+    color: black;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-top: 200px;
+    font-family: 'Dongle', sans-serif;
+    font-size: 30px;
 }
-
+.tasks{
+    display: block;
+}
+#kdev{
+    font-family: 'Rubik', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    color: white;
+    margin-left: 80px;
+    margin-bottom: 30px;
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 20px;
+    background-color: coral;
+    width: 120px;
+}
+#copy-rights{
+    font-family: 'Rubik', sans-serif;
+    font-size: 15px;
+    margin-left: -200px;
+}
+.footer .contact{
+    margin-top: 20px;
+    font-family: 'Dongle', sans-serif;
+    font-size: 23px;
+    font-weight: 600;
+}
+.footer .social-media{
+    margin-top: 20px;
+    font-family: 'Dongle', sans-serif;
+    font-size: 23px;
+    font-weight: 600;
+}
 /* body part */
 body{
-   background-color: rgba(89, 164, 252, 1);
+
+    /*background-color: rgba(89, 164, 252, 1);
     background-image: linear-gradient(94deg, rgba(89, 164, 252, 1) 0%, rgba(41, 53, 86, 1) 89%);
-    background-repeat: no-repeat;
+    background-repeat: no-repeat;*/
+    background-color: #d9d7d7;
 
 }
 
-/* category panel  */
-.category_panel{
-    clear:both;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    text-align: center;
-    display: block;
-    border-right: 2px solid black;
 
-}
-.category_panel button{
-    text-decoration: none;
-    text-align: center;
-    padding: 25px;
-    font-weight: 1000;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 20px;
-    width: 160px;
-    background-color: inherit;
-    border: none;
-}
-.category_panel button:hover{
-    background-color: white;
-    width: 100%;
-    color: black;
-}
-
-.category_panel a{
-    text-decoration: none;
-}
-.dropdown_content{
-    display: none;
-}
-.dropdown:hover .dropdown_content{
-    display: block;
-    background-color: rgba(0,0,0,0.1);
-    color:black;
-}
-.dropdown:hover .dropdown_content a{
-    color:black;
-}
-.dropdown:hover {
-    background-color: rgba(0,0,0,0.3);
-}
 /* content options*/
 
 .all_products{
@@ -129,5 +182,65 @@ body{
     grid-template-columns: 1fr 1fr;
 }
 .content{
-    padding: 40px;
+    margin-left: 100px;
+    color: black;
+
+
+}
+.text{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    color: black;
+    height: 100%;
+}
+.home-photos #main{
+    max-width: 80%;
+    margin-left: 40px;
+}
+.lower-photos{
+    display: flex;
+    flex-direction: row;
+}
+.lower-photos .dsa img{
+    margin-top: -120px;
+    height: 260px;
+    display: flex;
+    border-radius: 50px 15px 30px;
+}
+.lower-photos .sa img{
+    margin-top: -10px;
+    height: 260px;
+    display: flex;
+    border-radius: 15px 50px;
+}
+.comments{
+    margin-top: 70px;
+    background-color: #a78771;
+    height: 150px;
+    display: flex;
+    flex-direction: row;
+    border-radius: 30px;
+
+}
+.comments .image-name{
+    width: 25%;
+    padding: 20px;
+}
+.comments .image-name img{
+    width: 90px;
+    height: 90px;
+    border-radius: 80px;
+}
+.comments .image-name p{
+    font-size: 14px;
+    margin: 0;
+}
+.comments .user-comment{
+    padding: 20px;
+    font-size: 17px;
+    font-family: 'Dosis', sans-serif;
+    font-weight: 600;
+}
+.complaint{
+    font-family: 'Didact Gothic', sans-serif;
 }

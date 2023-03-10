@@ -1,5 +1,53 @@
-{% extends "Base.html" %}
+{% load static %}
+<link rel="stylesheet" href="/static/cartelements.css">
+<script rel="script" src="/static/html_updates.js"></script>
+<div class="navbar">
+        <div class="others">
+            <img src="">
+            <a href="{% url 'cart' %}">
+                <button class="koszyk">Bucket</button>
+            </a>
+            <a href="{% url 'all_products' %}">
+                <button class="koszyk">Products</button>
+            </a>
+            <a href="{% url 'information' %}">
+                <button class="koszyk">Home</button>
+            </a>
 
-{% block navbar %}
-    Hi python scripts
-{% endblock %}
+            <a href="{% url 'product_complain' %}">
+                <button class="koszyk">Complain</button>
+            </a>
+        </div>
+        <div class="login_panel">
+            {% if request.user.is_authenticated %}
+                <p id="username">Hi {{ user_name }}</p>
+                <a href="{% url 'log_out'%}">
+                    <button class="logout">Logout</button>
+                </a>
+                {% else %}
+                <a href="{% url 'login'%}">
+                    <button class="login">Zaloguj sie</button>
+                </a>
+                <div class="register-icon">
+                    <a href="{% url 'registration' %}">
+                        <button class="register">Registration</button>
+                    </a>
+                </div>
+                {% endif %}
+
+        </div>
+    </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+  register_view();
+});
+        function register_view(){
+            var register = document.getElementsByClassName('register-icon');
+            var session_satus = "{{ request.session.status }}"
+            if (session_satus){
+                register[0].style.visibility = "hidden";
+            }
+            console.log("Navbar");
+        }
+</script>
