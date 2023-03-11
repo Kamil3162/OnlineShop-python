@@ -26,12 +26,13 @@ font-family: 'Roboto Mono', monospace;
 }
 .cart-add{
     font-family: 'Roboto Mono', monospace;
-    font-size: 20px;
+    font-size: 30px;
     text-align: right;
     padding: 10px;
     width: 100px;
     border: none;
     background-color: inherit;
+    margin-top: -10px;
 }
 .cart-add a{
     text-decoration: none;
@@ -39,14 +40,25 @@ font-family: 'Roboto Mono', monospace;
 }
 .item_info {
     display: grid;
-    background-color: white;
+    background-color: inherit;
+    border-bottom: 1px solid black;
     margin-bottom: 20px;
-    border-radius: 15px;
+    height: 120px;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+
+.item_info button a{
+    text-decoration: none;
+}
+.item_info img{
+    max-width: 80px;
+    height: 100px;
+    border-radius: 40px;
+    padding: 5px;
 }
 .cart-minus{
     font-family: 'Montserrat', sans-serif;
-    font-size: 40px;
+    font-size: 50px;
     font-weight: 1000;
     text-align: left;
     color: black;
@@ -54,10 +66,12 @@ font-family: 'Roboto Mono', monospace;
     width: 100px;
     background-color: inherit;
     border: none;
+    margin-top: -15px;
 
 }
 .cart-minus a{
     text-decoration: none;
+    margin-top: 30px;
 }
 
 input[name=element-quantity]{
@@ -77,25 +91,29 @@ input[name=element-quantity]{
     font-family: 'Roboto Mono', monospace;
     font-weight: 600;
     margin-left: 10px;
+    margin-top: 40px;
+    text-align: center;
 }
 #delete{
-    background-color: red;
-    color: white;
-    font-size: 15px;
-
-}
-.item_info img{
-    max-width: 80px;
-    border-radius: 20px;
+    font-size: 25px;
+    height: 10px;
+    width: 100px;
+    margin-top: 40px;
+    border: none;
+    color: black;
+    text-decoration: none;
+    font-weight: 600;
+    background-color: inherit;
 }
 #delete a{
-    color: white;
-}
-#delete:hover{
-    background-color: red;
-}
-.item_info button a{
     text-decoration: none;
+}
+
+#delete a:hover{
+    color: red;
+}
+#name{
+    margin-top: 40px;
 }
 /* finilize panel */
 .content{
@@ -124,15 +142,81 @@ input[name=element-quantity]{
 }
 
 .naglowek{
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns:  2fr 1fr 1fr 1fr;
     height: 50px;
     margin-bottom: 0;
     flex-basis: 50%;
+    text-align: center;
+    font-size: 20px;
+    color: black;
 }
 .naglowek h2{
     color: black;
 }
 .cart-elements h2{
     color: black;
+}
+.final-continue-panel{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+#final_prize{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+#final_prize p{
+    margin-top: 20px;
+}
+#order-price{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+#order-price button{
+    text-decoration: none;
+    height: 40px;
+    font-size: 30px;
+    border: none;
+    font-family: 'Dongle', sans-serif;
+    font-weight: 600;
+    color: white;
+    background-color: #e28c49;
+    border-radius: 20px;
+    margin-right: 20px;
+}
+
+#order-price button a{
+    text-decoration: none;
+    color: black;
+}
+#order-price button:hover a{
+    color: white;
+}
+#btn_final button{
+    height: 40px;
+    font-size: 25px;
+    background-color: inherit;
+    border: none;
+    font-family: 'Dongle', sans-serif;
+    font-weight: 600;
+    color: black;
+}
+#btn_final button a{
+    text-decoration: none;
+    color: black;
+}
+#btn_final button:hover a{
+    text-decoration: none;
+    color: #e28c49;
+}
+#order-price p{
+    color: black;
+    margin-right: 0;
+    text-align: right;
+    margin-top: 10px;
+}
+#order-price #sum{
+    color: #756c28;
+    font-size: 30px;
+    margin-top: -3px;
 }

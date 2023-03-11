@@ -92,7 +92,7 @@ button a{
     grid-template-columns: 1fr 1fr 1fr;
 }
 .products-display{
-    display: grid;ccc
+    display: grid;
     grid-template-columns: 2fr 8fr;
 }
 

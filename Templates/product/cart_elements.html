@@ -6,9 +6,9 @@
     <div class="cart-elements">
         <h2>Shopping cart</h2>
         <div class="naglowek">
-            Product
-            Price
-            Quantity
+            <p>Product</p>
+            <p>Quantity</p>
+            <p>Price</p>
         </div>
         <div class="cart-products">
             {% if information %}
@@ -20,9 +20,7 @@
                     <label id="name" style="color:black">
                         {{ element.product.name }}
                     </label>
-                    <label id="price">
-                        {{ element.product.price }}zł
-                    </label>
+
                     <div class="quantity-component" style="display: flex">
                         <button class="cart-add" onclick="quantity_modifier_add()" name="add">
                             <a href="{% url 'adding_cart' element.product.id %}">
@@ -36,7 +34,9 @@
                             </a>
                         </button>
                     </div>
-
+                    <label id="price">
+                        {{ element.product.price }}zł
+                    </label>
                     <button id="delete">
                     <a href="{% url 'del_cart' element.product.id %}">X</a>
                     </button>
@@ -44,22 +44,26 @@
             <br>
             {% endfor %}
                 <br>
-            <div id="final_prize">
-                Sum {{ sum }}
+            <div class="final-continue-panel">
+                <div id="btn_final">
+                    <button>
+                        <a href="{% url 'all_products' %}">⟵ Back to shopping</a>
+                    </button>
+                </div>
+                <div id="final_prize">
+                    <div id="order-price">
+                        <button>
+                            <a href="{% url 'order_final' %}">Finalize</a>
+                        </button>
+                        <p>Total➜</p>
+                        <p id="sum">{{ sum }}zł</p>
+                    </div>
+                </div>
             </div>
 
-            <div id="btn_final">
-                <a href="{% url 'order_final' %}">
-                    <button>
-                        Finalize
-                    </button>
-                </a>
-            </div>
 
         {% endif %}
-        <button>
-            <a href="{% url 'all_products' %}">Continue</a>
-        </button>
+
     </div>
 
 
