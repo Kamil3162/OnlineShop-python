@@ -3,10 +3,11 @@
 <p class="dropbtn">Kategorie:</p>
 <br>
     <div class="dropdown_content">
-        <form action="{% url 'all_products' %}" method="post">
+        <form action="{% url 'particular_view' %}" method="post">
+            {% csrf_token %}
             <div class="categories">
             {% for category in categories %}
-                <input type="checkbox" value="{% url 'product_category' category %}">{{ category }}
+                <input type="checkbox" value="{% url 'product_category' category %}" name="{{ category.name }}">{{ category }}
                 <!-- <button>
                     <a href="{% url 'product_category' category %}">{{ category }}</a>
                 </button> -->
@@ -25,13 +26,12 @@
                 <br>
                 {% endfor %}
             </div>
+            <button>
+                Press
+            </button>
         </form>
 
     </div>
-    <button>
-        <a href="{% url 'all_products' %}">
-            Apply
-        </a>
-    </button>
+
 </div>
 

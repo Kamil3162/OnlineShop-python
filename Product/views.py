@@ -6,7 +6,15 @@ from django.http import JsonResponse, HttpResponse
 from django.shortcuts import (render,
                               redirect,
                               get_object_or_404)
+from django.core import exceptions
 from django.views import View
+from django.views.generic import ListView
+from MainPart.models import CustomUser
+
+from .forms import (RateForm,
+                    ShipForm,
+                    ComplainForm,
+                    CardForm)
 from .models import (Product,
                      Category,
                      OrderItem,
@@ -14,13 +22,7 @@ from .models import (Product,
                      Rate,
                      Complain,
                      CardPayment)
-from MainPart.models import CustomUser
 
-from .forms import (RateForm,
-                    ShipForm,
-                    ComplainForm,
-                    CardForm)
-from django.core import exceptions
 def generate_opinions(query:Rate):
     final_opinion = 0
     counter = 0
@@ -29,8 +31,35 @@ def generate_opinions(query:Rate):
         counter += 1
     return final_opinion/counter
 
-class all_products():
-    pass
+
+class ProductCategoryView(ListView):
+    """
+        This is responsible for generating products with couple categories
+        as arguments
+    """
+    model = Product
+    template_name = "product/category_products.html"
+    context_object_name = 'categories1'
+
+    ''' This return data to used html file'''
+    '''
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['categories1'] = Category.objects.all().filter()
+        return context
+    '''
+    # get method do get all products from particular categories
+    def get_context_data(self, **kwargs):
+        """
+            Context return all object based on Product data model
+        """
+        context = super(ProductCategoryView, self).get_context_data(**kwargs)
+        data = self.request.POST('Elektronika')
+        print(data)
+        context['data'] = ''
+        return context
+
+
 def all_products(request):
     """
         This function is responsible for generating all product on site

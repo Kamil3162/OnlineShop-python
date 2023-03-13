@@ -22,7 +22,6 @@ def access_categories(request):
     }
     return context
 
-
 def indexpage(request):
     return render(request, "Navbar.html")
 

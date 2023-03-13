@@ -150,7 +150,6 @@ button a{
 
 /* view rate panel*/
 .view-rate-panel{
-    display: flex;
     flex-direction: row;
     justify-content: center;
 }
