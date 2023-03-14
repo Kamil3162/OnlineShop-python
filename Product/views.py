@@ -1,7 +1,9 @@
 import math
+import timeit
 from typing import List
-
+from django.db.models import Q
 from django.core.exceptions import ObjectDoesNotExist
+from django.db.models import QuerySet
 from django.http import JsonResponse, HttpResponse
 from django.shortcuts import (render,
                               redirect,
@@ -21,7 +23,8 @@ from .models import (Product,
                      Order,
                      Rate,
                      Complain,
-                     CardPayment)
+                     CardPayment,
+                     Producer)
 
 def generate_opinions(query:Rate):
     final_opinion = 0
@@ -54,10 +57,34 @@ class ProductCategoryView(ListView):
             Context return all object based on Product data model
         """
         context = super(ProductCategoryView, self).get_context_data(**kwargs)
-        data = self.request.POST('Elektronika')
-        print(data)
         context['data'] = ''
+        context['query_set'] = self.get_queryset()
+        print("Twoj stary najebany")
         return context
+
+    def get_queryset(self):
+        """
+            queryset = super().get_queryset() - return default queryset on model
+        """
+        queryset = super().get_queryset()
+        print(type(queryset))
+        companies = self.get_company_name(self.request.GET.getlist('company'))
+        print(queryset)
+        print(companies)
+        print("this is queryset")
+        statement = Q
+        for company in companies:
+            queryset = queryset.filter(Q(producer=company))
+            #queryset = queryset | Product.objects.filter(producer=company)
+        return queryset
+
+    def get_company_name(self, query_list: str):
+        companies = list()
+        for company_name in query_list:
+            company = Producer.objects.get(name=company_name)
+            companies.append(company)
+        return companies
+
 
 
 def all_products(request):
@@ -97,6 +124,7 @@ def all_products(request):
     return render(request, 'product/all_products.html', {'data': prod,
                                                          'opinion': marks,
                                                          'opinions': opinions})
+
 class Product_details(View):
 
     def get(self, request, id):

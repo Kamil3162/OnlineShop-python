@@ -3,7 +3,7 @@
 <p class="dropbtn">Kategorie:</p>
 <br>
     <div class="dropdown_content">
-        <form action="{% url 'particular_view' %}" method="post">
+        <form action="{% url 'particular_view' %}" method="get">
             {% csrf_token %}
             <div class="categories">
             {% for category in categories %}
@@ -21,8 +21,7 @@
                 Companies
                 <br>
                 {% for company in producents %}
-                    <input type="checkbox" value="" name="company">{{ company }}
-
+                    <input type="checkbox" value="{{ company }}" name="company">{{ company }}
                 <br>
                 {% endfor %}
             </div>
