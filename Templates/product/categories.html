@@ -7,10 +7,7 @@
             {% csrf_token %}
             <div class="categories">
             {% for category in categories %}
-                <input type="checkbox" value="{% url 'product_category' category %}" name="{{ category.name }}">{{ category }}
-                <!-- <button>
-                    <a href="{% url 'product_category' category %}">{{ category }}</a>
-                </button> -->
+                <input type="checkbox" value="{{ category }}" name="category">{{ category }}
             <br>
             {% endfor %}
             </div>

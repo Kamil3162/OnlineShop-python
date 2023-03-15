@@ -42,7 +42,6 @@ class ProductCategoryView(ListView):
     """
     model = Product
     template_name = "product/category_products.html"
-    context_object_name = 'categories1'
 
     ''' This return data to used html file'''
     '''
@@ -57,9 +56,8 @@ class ProductCategoryView(ListView):
             Context return all object based on Product data model
         """
         context = super(ProductCategoryView, self).get_context_data(**kwargs)
-        context['data'] = ''
-        context['query_set'] = self.get_queryset()
-        print("Twoj stary najebany")
+        context['data'] = self.get_queryset()
+        context['opinion'] = self.generate_all_marks(context['data'])
         return context
 
     def get_queryset(self):
@@ -67,15 +65,14 @@ class ProductCategoryView(ListView):
             queryset = super().get_queryset() - return default queryset on model
         """
         queryset = super().get_queryset()
-        print(type(queryset))
         companies = self.get_company_name(self.request.GET.getlist('company'))
-        print(queryset)
-        print(companies)
-        print("this is queryset")
-        statement = Q
-        for company in companies:
-            queryset = queryset.filter(Q(producer=company))
-            #queryset = queryset | Product.objects.filter(producer=company)
+        categories = self.get_categories_name(self.request.GET.getlist('category'))
+        if not categories.__len__() and companies.__len__():
+            return queryset.filter(producer__in=companies)
+        elif categories.__len__() and companies.__len__():
+            queryset = queryset.filter(producer__in=companies, category__in=categories)
+        elif categories.__len__() and not companies.__len__():
+            queryset = queryset.filter(category__in=categories)
         return queryset
 
     def get_company_name(self, query_list: str):
@@ -85,8 +82,33 @@ class ProductCategoryView(ListView):
             companies.append(company)
         return companies
 
+    def get_categories_name(self, query_categories):
+        category_list = list()
+        for category in query_categories:
+            category = Category.objects.get(name=category)
+            category_list.append(category)
+        return category_list
 
+    def generate_all_marks(self, prod):
+        generated_marks = {}
+        for product in prod:
+            result = self.generate_average_rate(product)
+            key = str(product.name)
+            generated_marks[key] = round(result, 1)
+        return generated_marks
 
+    def generate_average_rate(self, product: Product):
+        average_mark = 0
+        rates = Rate.objects.filter(product=product)
+        print(len(rates), 'to jest ta liczba')
+        if rates.__len__() == 0:
+            return 0
+        else:
+            for rate in rates:
+                average_mark += rate.rate
+            return average_mark/len(rates)
+
+'''
 def all_products(request):
     """
         This function is responsible for generating all product on site
@@ -124,7 +146,7 @@ def all_products(request):
     return render(request, 'product/all_products.html', {'data': prod,
                                                          'opinion': marks,
                                                          'opinions': opinions})
-
+'''
 class Product_details(View):
 
     def get(self, request, id):
