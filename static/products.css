@@ -68,6 +68,7 @@
     width: 60%;
     text-align: center;
 }*/
+
 button a{
     text-decoration: none;
     color: black;
@@ -95,6 +96,27 @@ button a{
     grid-template-columns: 2fr 8fr;
 }
 
+#product{
+    margin-top: 20px;
+    padding: 10px;
+    text-align: center;
+}
+#discount-entry::first-letter{
+    color: #b15435;
+    font-size: 31px;
+}
+#discount-entry{
+    color: black;
+    font-size: 25px;
+    font-family: 'Jaldi', sans-serif;
+    margin-left: 40px;
+    font-weight: 600;
+}
+.discount{
+    width: 250px;
+    text-align: center;
+    margin-left: 60px;
+}
 /* category panel  */
 .category_panel{
     clear:both;

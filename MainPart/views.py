@@ -39,7 +39,7 @@ def login_auth(request):
             print(login_form)
             login_user = login_form.cleaned_data['login']
             password = login_form.cleaned_data['password']
-            return redirect('information')
+            return redirect('home')
     login_form = forms.LoginForm()
     return render(request, 'Login.html', {'form': login_form})
 

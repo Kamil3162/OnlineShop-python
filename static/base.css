@@ -130,10 +130,10 @@ font-family: 'Roboto Mono', monospace;
     text-align: center;
     background-color: white;
     color: black;
-    position: absolute;
+    position:relative ;
     left: 0;
     right: 0;
-    margin-top: 200px;
+    margin-top: 70px;
     font-family: 'Dongle', sans-serif;
     font-size: 30px;
 }

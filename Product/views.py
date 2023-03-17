@@ -5,6 +5,7 @@ from django.db.models import Q
 from django.core.exceptions import ObjectDoesNotExist
 from django.db.models import QuerySet
 from django.http import JsonResponse, HttpResponse
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import (render,
                               redirect,
                               get_object_or_404)
@@ -107,28 +108,25 @@ class ProductCategoryView(ListView):
                 average_mark += rate.rate
             return average_mark/len(rates)
 
-def discounted_products(request):
-    products = Product.objects.all()
-    context = {
-        'promotion':products,
-        'stda1': "jebac"
-    }
-    return render(request, 'Base.html', context)
-class HomeView(ListView):
+class DiscountView(ListView):
     model = Product
     template_name = 'Base.html'
 
     def get_context_data(self, **kwargs):
-        context = super(HomeView, self).get_context_data(**kwargs)
-        context['promotion'] = self.get_queryset()
-        context['stda'] = 'dsa'
+        print("this is context data")
+        context = super().get_context_data()
+        context = {
+            'sta': 'dsa1',
+            'promotion': self.get_queryset()
+        }
         return context
 
     def get_queryset(self):
-        queryset = super(HomeView, self).get_queryset() # return all objects from Products
+        print("this is query data")
+        queryset = super(DiscountView, self).get_queryset()
         queryset.filter(discount__gt=0)
-        print(queryset)
         return queryset
+
 '''
 def all_products(request):
     """
@@ -355,7 +353,7 @@ def cart_count_minus(request, id_prod):
             raise ValueError
     return redirect('cart')
 
-
+@login_required(login_url="/OnShop/login/")
 def finalize_order(request):
     """
     Function to finilize the order, first we get a forms to apply data,

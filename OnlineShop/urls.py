@@ -17,11 +17,12 @@ from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib import admin
 from django.urls import path, include
-
+from Product import views
 import MainPart
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('OnShop/', include('MainPart.urls')),
+    path('OnShop/', views.DiscountView.as_view(), name='home'),
     path('OnShop/product/', include('Product.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

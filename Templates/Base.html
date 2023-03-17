@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/static/base.css">
+    <link rel="stylesheet" href="/static/products.css">
     <title>Title</title>
 </head>
 <body>
@@ -61,7 +62,6 @@
 
                 </div>
         </div>
-        {% include 'product/discounted_products.html' %}
     {% endblock %}
     {% endblock %}
     {% endblock %}
@@ -75,10 +75,26 @@
     {% endblock %}
     {% endblock %}
         </div>
-    <div class="textdsada" style="color: black">
-        {{ stda1 }}
-        {% for promo in promotion %}
-            {{ promo }}
+    <p id="discount-entry">Discounted products:</p>
+    <div class="discount_product">
+        {% for item in promotion|slice:":3" %}
+        <div class="discount product_control">
+                    <div class="name">{{ item }}</div>
+                    <div class="photo">
+                        <img src="{{ item.image.url }}" width="60%" height="70%" style="justify-items: center">
+                    </div>
+                    <div class="average_mark">
+                        {{ item.description }}
+                    </div>
+                    <div class="price">
+                        {{ item.price }}zł
+                    </div>
+                    <div class="view-rate-panel">
+                        <button data-product="{{ item.id }}">
+                            <a href="{% url 'product_view' item.id %}">Check</a>
+                        </button>
+                    </div>
+                </div>
         {% endfor %}
     </div>
     </div>
