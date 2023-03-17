@@ -56,7 +56,13 @@ font-family: 'Roboto Mono', monospace;
 }
 
 .others{
-    margin-left: 30%;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+}
+.others .entry{
+    justify-content: left;
+    width: 300px;
 }
 .navbar button{
     font-family: 'Rubik', sans-serif;

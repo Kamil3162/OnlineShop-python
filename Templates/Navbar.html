@@ -2,21 +2,25 @@
 <link rel="stylesheet" href="/static/cartelements.css">
 <script rel="script" src="/static/html_updates.js"></script>
 <div class="navbar">
-        <div class="others">
-            <img src="">
-            <a href="{% url 'cart' %}">
-                <button class="koszyk">Bucket</button>
-            </a>
-            <a href="{% url 'all_products' %}">
-                <button class="koszyk">Products</button>
-            </a>
-            <a href="{% url 'information' %}">
-                <button class="koszyk">Home</button>
-            </a>
 
-            <a href="{% url 'product_complain' %}">
-                <button class="koszyk">Complain</button>
-            </a>
+        <div class="others">
+            <div id="kdev" class="entry">KAMIL-DEV</div>
+            <div class="urls">
+                <img src="">
+                <a href="{% url 'cart' %}">
+                    <button class="koszyk">Bucket</button>
+                </a>
+                <a href="{% url 'all_products' %}">
+                    <button class="koszyk">Products</button>
+                </a>
+                <a href="{% url 'information' %}">
+                    <button class="koszyk">Home</button>
+                </a>
+
+                <a href="{% url 'product_complain' %}">
+                    <button class="koszyk">Complain</button>
+                </a>
+            </div>
         </div>
         <div class="login_panel">
             {% if request.user.is_authenticated %}

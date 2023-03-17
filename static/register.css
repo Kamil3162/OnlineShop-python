@@ -62,7 +62,7 @@ body {
 
 #log-in{
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr 2fr 1fr;
     width: 100%;
 
 }
@@ -84,6 +84,9 @@ body {
     font-family: 'Rubik', sans-serif;
     font-weight: 800;
 
+}
+#home_btn{
+    background-color: #5069ff;
 }
 #register-btn{
 }

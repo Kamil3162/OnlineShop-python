@@ -34,7 +34,6 @@ def generate_opinions(query:Rate):
         counter += 1
     return final_opinion/counter
 
-
 class ProductCategoryView(ListView):
     """
         This is responsible for generating products with couple categories
@@ -108,6 +107,28 @@ class ProductCategoryView(ListView):
                 average_mark += rate.rate
             return average_mark/len(rates)
 
+def discounted_products(request):
+    products = Product.objects.all()
+    context = {
+        'promotion':products,
+        'stda1': "jebac"
+    }
+    return render(request, 'Base.html', context)
+class HomeView(ListView):
+    model = Product
+    template_name = 'Base.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(HomeView, self).get_context_data(**kwargs)
+        context['promotion'] = self.get_queryset()
+        context['stda'] = 'dsa'
+        return context
+
+    def get_queryset(self):
+        queryset = super(HomeView, self).get_queryset() # return all objects from Products
+        queryset.filter(discount__gt=0)
+        print(queryset)
+        return queryset
 '''
 def all_products(request):
     """
@@ -378,10 +399,10 @@ def finalize_order(request):
         card_form = CardForm()
         user_object = CustomUser.objects.get(email=request.session.get('username'))
         order = Order.objects.get(customer=user_object, complete=False)
-        order_items = OrderItem.objects.filter(order=order)
+        #order_items = OrderItem.objects.filter(order=order)
         context = {
-            'items': order_items,
-            'value': calculate_sum(order_items),
+            #'items': order_items,
+            #'value': calculate_sum(order_items),
             'form': delivery_form,
             'card_form': card_form
         }

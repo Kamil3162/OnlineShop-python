@@ -13,6 +13,9 @@
             <button class="btn btn-login">
                 <a href="{% url 'login' %}">Login</a>
             </button>
+            <button id="home_btn" class="btn btn-login">
+                <a href="{% url 'all_products' %}">Home</a>
+            </button>
         </div>
         <form action="{% url 'registration' %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}

@@ -40,6 +40,7 @@ class Product(models.Model):
     available = models.BooleanField(default=True)
     price = models.DecimalField(max_digits=6, decimal_places=2)
     producer = models.ForeignKey(Producer, on_delete=models.CASCADE)
+    discount = models.IntegerField(null=True, validators=[MaxValueValidator(80)])
 
     def __str__(self):
         return self.name

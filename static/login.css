@@ -23,6 +23,7 @@
 }
 .login-part{
     background-color: white;
+    padding: 10px;
 }
 .login-view-part{
     background-color: #ffffff;
@@ -40,6 +41,8 @@
     border-radius: 20px;
     background-color: coral;
     width: 120px;
+    top:20px;
+
 }
 
 #login-entrace{
@@ -48,14 +51,15 @@
     font-family: 'Rubik', sans-serif;
     font-weight: 800;
     color: black;
-    margin-left: 60px;
+    margin-left: 200px;
     margin-bottom: 0px;
     margin-top: 100px;
+
 }
 #entrace-text{
     word-break: break-word;
     font-size: 17px;
-    margin-left: 40px;
+    margin-left: 200px;
     font-family: 'Rubik', sans-serif;
     color: black;
 }
@@ -63,11 +67,12 @@ body{
     background-color:rgb(188,190,191);
 }
 .form-login-part{
+    text-align: center;
     background-color: coral;
     height: 40%;
     border-radius: 20px;
-    margin-left: 20px;
-    width: 70%;
+    margin-left: 150px;
+    width: 60%;
     padding: 40px;
     margin-bottom: 30px;
 }
@@ -109,7 +114,6 @@ input{
     background-color: #5069ff;
     font-size: 20px;
     text-align: center;
-    margin-left: 25%;
     margin-top: 30px;
     border-radius: 20px;
     height: 40px;
