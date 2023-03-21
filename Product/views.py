@@ -226,6 +226,8 @@ class Product_details(View):
 
 def calculate_sum(items: OrderItem):
     value = 0
+    print(OrderItem.objects.all())
+    print("to jest calculate sum  - naura")
     for item in items:
         value += item.product.price * item.quantity
     return value
@@ -239,15 +241,18 @@ def cart_elements(request):
                 Next we are displaying these items using for loop 
             '''
             order = Order.objects.get(customer=customer, complete=False)
-            print(order)
             if order.complete is False:
                 allow = True
                 items = order.orderitem_set.all()
+                print(items)
+                for item in items:
+                    print(item.product)
                 context = {
                     'items': items,
                     'sum': calculate_sum(items),
                     'finalize': True
                 }
+
             else:
                 context = {
                     'items': [],

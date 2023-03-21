@@ -19,11 +19,15 @@
             </div>
             <div class="card-form">
                 {% for data in card_form %}
-                    {{ data.label }}
-                    <br>
-                    {{ data }}
-                    <br>
+                    <div class="container">
+                        {{ data.label }}
+                        {{ data }}
+                    </div>
+
                 {% endfor %}
+            <!--
+                <label for="ccn">Credit Card Number:</label>
+                <input id="ccn" type="tel" inputmode="numeric" pattern="[0-9\s]{13,19}" autocomplete="cc-number" maxlength="19" placeholder="xxxx xxxx xxxx xxxx"> -->
             </div>
             <div class="payment-method">
                 <label>

@@ -5,6 +5,7 @@ from django.core.validators import (MaxValueValidator,
                                     MinLengthValidator)
 from django.shortcuts import redirect
 from MainPart.models import CustomUser
+from django.core.exceptions import ValidationError
 from django import forms
 # Create your models here.
 
@@ -162,8 +163,16 @@ class Complain(models.Model):
     date_created = models.DateField(auto_now_add=True)
 
 
+
+def card_num_validator(value):
+    """
+        Function used to validate a length of input card number
+    """
+    if len(value) < 16:
+        raise ValidationError("Card number is too short")
+
 class CardPayment(models.Model):
-    card_number = models.IntegerField()
+    card_number = models.CharField(max_length=16, validators=[card_num_validator])
     safe_code = models.CharField(max_length=3)
     expired_year = models.IntegerField(blank=False, validators=[MinValueValidator(2023),
                                                                 MaxValueValidator(2028)])

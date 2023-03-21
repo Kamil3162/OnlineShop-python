@@ -124,7 +124,6 @@ input[name=element-quantity]{
 }
 
 #form input{
-    border-radius: 20px;
     padding: 10px;
 }
 .content #apply-btn{
@@ -134,7 +133,7 @@ input[name=element-quantity]{
     border-radius: 20px;
     background-color: green;
     font-weight: 600;
-    font-family: 'Dongle', sans-serif;;
+    font-family: 'Dongle', sans-serif;
 }
 
 #apply-btn:hover{

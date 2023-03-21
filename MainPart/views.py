@@ -80,7 +80,7 @@ class LoginView(View):
                     request.session['status'] = True
                     request.session.set_expiry(None)
                     print("data exists")
-                    return redirect("information")
+                    return redirect("home")
                 except Exception:
                     print("No data")
         else:
@@ -114,7 +114,7 @@ class RegisterView(View):
                 form.save()
                 #except Exception:
                     #print("maybe user exist or you have another problem")
-        return redirect("information")
+        return redirect("home")
 
     def data_validator(self, username):
         user = CustomUser.objects.get(email=username)
@@ -127,4 +127,4 @@ class RegisterView(View):
 def log_out(request):
     request.session.flush()
     logout(request)
-    return redirect("information")
+    return redirect("home")
