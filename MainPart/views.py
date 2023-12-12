@@ -107,14 +107,24 @@ class RegisterView(View):
 
     def post(self, request):
         if request.method == "POST":
-            form = forms.RegisterForm(request.POST)
-            if form.is_valid():
-                print("its goood")
-                mail = form.cleaned_data['email']
-                form.save()
-                #except Exception:
-                    #print("maybe user exist or you have another problem")
-        return redirect("home")
+            print("to jest motoda post")
+            try:
+                form = forms.RegisterForm(request.POST)
+                if not form.is_valid():
+                    raise ValueError(
+                        "Form data is invalid")  # Raise an exception if the form is invalid
+
+                user = form.save(commit=False)  # Create user object but don't save to DB yet
+                print(form.cleaned_data.get('password'))
+                user.set_password(form.cleaned_data.get('password'))  # Hash password
+                user.save()  # Now save user to DB
+
+                return HttpResponse("To jest testowy message. Email: {email}")
+            except Exception as e:
+                print(e)
+                return redirect("home")
+        else:
+            return redirect("home")
 
     def data_validator(self, username):
         user = CustomUser.objects.get(email=username)

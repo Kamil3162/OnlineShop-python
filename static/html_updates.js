@@ -68,7 +68,6 @@ function paymentChoose(){
 }
 
 function validation(){
-    alert("Twoj stary pijany")
     const form = document.querySelector('#form');
     form.addEventListener('submit', function(event) {
         event.preventDefault();
@@ -82,7 +81,6 @@ function validation(){
 
 function comments_limiter(){
     var comment_container = document.getElementsByName('.comment');
-    console.log("Twoj strary");
     console.log(comment_container);
 
 }
