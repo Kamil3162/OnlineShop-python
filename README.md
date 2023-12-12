@@ -31,7 +31,19 @@ Project is based on idea which I get from my lessons on the university.
 # Session
 Session and authentication process is based on builtin authentication machanism from Django framework.
 
-[//]: # (# /trucks)
+# /register
+![9.png](9.png)
+# /login
+![8.png](8.png)
+# /product
+![10.png](10.png)
+# /product/all/cart/
+![2.png](2.png)
+# /product/all/complains/
+![5.png](5.png)
+# /product/  - home
+![3.png](3.png)
+# /product/all/cart/finilize
+![2.png](2.png)
 
-[//]: # (![react4.png]&#40;react4.png&#41;)
 

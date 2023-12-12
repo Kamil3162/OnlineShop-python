@@ -64,16 +64,13 @@ class LoginView(View):
         if request.method == "POST":
             print("this is login profile")
             form = forms.LoginForm(request.POST)
-            print(form.errors)
-            print(form.fields)
-            print(form.cleaned_data['password'])
-            print(request.POST)
             if form.is_valid():
                 login_1 = form.cleaned_data['username']
                 password = form.cleaned_data['password']
                 print(login_1, password)
                 try:
                     user_auth = authenticate(request, username=login_1, password=password)
+                    print(user_auth)
                     login(request, user_auth)
                     request.session['username'] = login_1
                     request.session['count_prod'] = 0

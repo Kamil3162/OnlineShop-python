@@ -22,7 +22,7 @@ import MainPart
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('OnShop/', include('MainPart.urls')),
-    path('OnShop/', views.DiscountView.as_view(), name='home'),
+    path('', include('MainPart.urls')),
+    path('', views.DiscountView.as_view(), name='home'),
     path('OnShop/product/', include('Product.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -133,10 +133,10 @@ font-family: 'Roboto Mono', monospace;
     color: black;
     left: 0;
     right: 0;
-    margin-top: 70px;
     font-family: 'Dongle', sans-serif;
     font-size: 30px;
     bottom: 0;
+    margin-top: 350px;
 }
 .tasks{
     display: block;
