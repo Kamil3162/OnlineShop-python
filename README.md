@@ -29,7 +29,7 @@ Project is based on idea which I get from my lessons on the university.
    ### `python manage.py runserver`
 
 # Session
-Session and authentication process is based on builtin authentication machanism from Django framework.
+Session and authentication process is based on builtin authentication mechanism from Django framework.
 
 # /register
 ![9.png](9.png)
