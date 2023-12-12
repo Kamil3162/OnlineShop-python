@@ -20,15 +20,13 @@ Project is based on idea which I get from my lessons on the university.
     - inside virtual environment directory go to Script and run activate.bat 
     ### `Scripts\activate.bat`
     ### `pip install -r requirements.txt `
-4. Add to your environment google api key to have an access os.getenv('GOOGLE_API')
-5. Make a migrations of all models data inside project files where we have manage.py 
+4. Make a migrations of all models data inside project files where we have manage.py 
     ### `python manage.py makemigrations`
     ### `python manage.py migrate`
-6. Inside cloned repository make a checkout on master branch   
+5. Inside cloned repository make a checkout on master branch   
    ### `git checkout master`
-7. Run entire cloned project, you have to go inside project directory with all files   
+6. Run entire cloned project, you have to go inside project directory with all files   
    ### `python manage.py runserver`
-8. You can have a different port but React is prepared on this particular communication port
 
 # Session
 Session and authentication process is based on builtin authentication machanism from Django framework.
