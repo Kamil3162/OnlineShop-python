@@ -1,8 +1,6 @@
 # OnlineShop
 
-Topic of project is online shop.
-You have options to create new products, complains, users.
-Project is based on idea which I get from my lessons on the university.
+The topic of the project is an online shop. It offers options to create new products, handle complaints, and manage users. The project is based on an idea I developed from my university lessons
 
 # Used technologies
 + Python
